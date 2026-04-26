@@ -1,10 +1,10 @@
-# PIUG Digital Library
+# PIUG Digital Library 📚
 
-A small **React** web app (TypeScript, Vite, React Router, Bootstrap) for the PIUG project. This guide assumes you are new to working in an IDE, a command-line terminal, and a Git team repository—take it one step at a time.
+A small **React** web app (TypeScript, Vite, React Router, Bootstrap) for the PIUG project. This guide assumes you are new to working in an IDE, a command-line terminal, and a Git team repository—take it one step at a time. 🐣
 
 ---
 
-## 1. Get access to this repository on GitHub
+## 1. Get access to this repository on GitHub 🔑
 
 You can’t push code or see private coursework until you are a **collaborator** on the repo (or a member of the course organization).
 
@@ -20,15 +20,15 @@ You can’t push code or see private coursework until you are a **collaborator**
 4. **Open the project page**  
    After you’re in, the repository will appear on your profile or in the org’s list. Bookmark it. You’ll use this page for issues, pull requests, and the green **Code** button when you need the clone URL.
 
-*Tip:* Until you have access, you won’t be able to clone a private repository. If something fails, double-check the invite and that you’re logged into the right GitHub account in the browser.
+💡 *Tip:* Until you have access, you won’t be able to clone a private repository. If something fails, double-check the invite and that you’re logged into the right GitHub account in the browser.
 
 ---
 
-## 2. What you need on your computer
+## 2. What you need on your computer 🧰
 
-- **[Node.js](https://nodejs.org/)** (LTS version is best). It installs `node` and `npm` (Node Package Manager), which this project needs to run and build.
-- **Git** (usually already installed, or get it from [git-scm.com](https://git-scm.com/)). You’ll use it to `clone` the repository once you have access.
-- **[Cursor](https://cursor.com/)** (or another editor)—this is where you’ll edit code and use the **integrated terminal** below.
+- 🧩 **[Node.js](https://nodejs.org/)** (LTS version is best). It installs `node` and `npm` (Node Package Manager), which this project needs to run and build.
+- 🌳 **Git** (usually already installed, or get it from [git-scm.com](https://git-scm.com/)). You’ll use it to `clone` the repository once you have access.
+- 🖱️ **[Cursor](https://cursor.com/)** (or another editor)—this is where you’ll edit code and use the **integrated terminal** below.
 
 If you’re unsure whether Node is installed, open a terminal and run:
 
@@ -41,7 +41,7 @@ You should see version numbers, not an error.
 
 ---
 
-## 3. Get the project on your machine (clone)
+## 3. Get the project on your machine (clone) 🐑
 
 1. On the GitHub page of this repo, click the green **Code** button and copy the **HTTPS** URL (something like `https://github.com/…/PIUG-DigitalLibrary.git`).
 
@@ -56,7 +56,7 @@ You should see version numbers, not an error.
 
 ---
 
-## 4. Using the terminal in Cursor (step by step)
+## 4. Using the terminal in Cursor (step by step) 🖥️
 
 The **terminal** is a text window where you type commands; the computer runs them in order. In Cursor, you don’t have to use a separate app—the terminal is inside the editor.
 
@@ -85,7 +85,7 @@ That’s the loop for this course: open repo → open terminal in Cursor → `np
 
 ---
 
-## 5. Install dependencies
+## 5. Install dependencies 📦
 
 Dependencies are the libraries listed in [package.json](package.json). You download them once (or after pulling changes) with **npm** from the project root:
 
@@ -97,7 +97,7 @@ This creates a `node_modules` folder. It can take a minute. You normally **do no
 
 ---
 
-## 6. Run the app in development
+## 6. Run the app in development 🚂
 
 Start the Vite dev server (hot reload while you code):
 
@@ -112,10 +112,10 @@ To stop the server, go back to the terminal and press **Ctrl+C**.
 
 ---
 
-## 7. If you get stuck
+## 7. If you get stuck 🆘
 
 - **“Command not found” for `node` or `npm`** → Node.js isn’t installed or isn’t on your PATH. Reinstall the LTS version from [nodejs.org](https://nodejs.org/) and restart Cursor.
 - **“EACCES” or permission errors** → Don’t run `npm` as admin unless your instructor says so; try a folder you own, like `Documents\Projects`.
 - **Port already in use** → Another `npm run dev` is still running. Find that terminal and **Ctrl+C**, or use the port Vite suggests in the log.
 
-You’re in the right place. Small errors are normal; saving your work, committing, and asking early saves time. Happy building.
+You’re in the right place. Small errors are normal; saving your work, committing, and asking early saves time. Happy building. 🎉
