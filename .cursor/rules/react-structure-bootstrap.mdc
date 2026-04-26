@@ -1,0 +1,29 @@
+---
+description: Structură React (pagini, componente), Bootstrap exclusiv, consistență cu codul existent
+alwaysApply: true
+---
+
+# PIUG Digital Library — direcții de dezvoltare
+
+## Înainte de orice modificare
+
+- Citește fișierele relevante din proiect (structură, importuri, naming, tipuri).
+- Respectă tiparele deja folosite (componente, foldere, convenții TypeScript/React).
+- Nu introduce pattern-uri noi dacă există deja un echivalent stabil în cod.
+
+## Structura proiectului (best practices)
+
+- **`src/pages/`** — toate paginile într-un singur folder părinte. Fiecare pagină are **subfolderul ei** (ex.: `src/pages/Home/`, `src/pages/Books/`), cu fișierul paginii și eventual `index.ts` pentru export curat.
+- **`src/components/`** — componente **reutilizabile** (UI generic: butoane layout, carduri, header comun etc.), fiecare în subfolder propriu când are sens sau grupate logic (ex.: `components/ui/`, `components/layout/`).
+- Paginile **compun** rutele și fluxul; logica vizuală partajată stă în `components/`, nu duplicată în fiecare pagină.
+- Păstrează **`src/assets/`** pentru imagini/statice; hook-uri/utilități pot sta în `src/hooks/`, `src/utils/` dacă apar și se aliniază cu restul proiectului.
+
+## Stilizare
+
+- **Doar Bootstrap** pentru stil (clase utilitare, grid, componente Bootstrap). **Nu adăuga** Tailwind, styled-components, Emotion, CSS-in-JS dedicat stilizării, sau alte framework-uri UI paralele, decât dacă proiectul schimbă explicit această regulă.
+- Dacă lipsește din dependențe, Bootstrap se adaugă în mod consecvent cu stack-ul ales (ex. pachetele `bootstrap` și, dacă e cazul, `react-bootstrap`), fără a amesteca cu alte sisteme de design.
+
+## Calitate
+
+- Componente funcționale, tipuri TypeScript clare, importuri ordonate ca în restul repo-ului.
+- Rutele (React Router etc.) rămân subțiri: importă pagini din `src/pages/...`, nu inversa dependențele (componente reutilizabile nu ar trebui să importe pagini).

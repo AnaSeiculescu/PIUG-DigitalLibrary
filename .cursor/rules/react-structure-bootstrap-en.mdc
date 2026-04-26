@@ -1,0 +1,29 @@
+---
+description: React structure (pages, components), Bootstrap only, consistency with existing code
+alwaysApply: true
+---
+
+# PIUG Digital Library — development guidelines
+
+## Before any change
+
+- Read the relevant project files (structure, imports, naming, types).
+- Follow patterns already in use (components, folders, TypeScript/React conventions).
+- Do not introduce new patterns when a stable equivalent already exists in the codebase.
+
+## Project structure (best practices)
+
+- **`src/pages/`** — all pages live under one parent folder. Each page has **its own subfolder** (e.g. `src/pages/Home/`, `src/pages/Books/`), with the page file and optionally `index.ts` for a clean export.
+- **`src/components/`** — **reusable** components (generic UI: layout buttons, cards, shared header, etc.), each in its own subfolder when it helps, or grouped logically (e.g. `components/ui/`, `components/layout/`).
+- Pages **compose** routes and flow; shared visual logic belongs in `components/`, not duplicated across pages.
+- Keep **`src/assets/`** for images/static files; hooks/utilities may live in `src/hooks/`, `src/utils/` when they appear and match the rest of the project.
+
+## Styling
+
+- **Bootstrap only** for styling (utility classes, grid, Bootstrap components). **Do not add** Tailwind, styled-components, Emotion, styling-focused CSS-in-JS, or parallel UI frameworks unless the project explicitly changes this rule.
+- If it is missing from dependencies, add Bootstrap in a way that fits the chosen stack (e.g. `bootstrap` and, when appropriate, `react-bootstrap`), without mixing in other design systems.
+
+## Quality
+
+- Functional components, clear TypeScript types, imports ordered like the rest of the repo.
+- Routes (React Router, etc.) stay thin: import pages from `src/pages/...`; do not invert dependencies (reusable components should not import pages).
