@@ -16,9 +16,7 @@ export function AppLayout({ children }: AppLayoutProps) {
     <div className="d-flex flex-column min-vh-100">
       <AppNavbar />
       <main className="flex-grow-1 d-flex flex-column" id="app-main">
-        <Container className="py-4 flex-grow-1 d-flex align-items-center justify-content-center">
-          {children}
-        </Container>
+        <Container className="py-4 flex-grow-1">{children}</Container>
       </main>
     </div>
   )

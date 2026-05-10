@@ -1,0 +1,2 @@
+export { Recomandari } from './Recomandari'
+
