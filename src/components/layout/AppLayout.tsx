@@ -1,4 +1,3 @@
-import { Container } from 'react-bootstrap'
 import type { ReactNode } from 'react'
 
 import { AppNavbar } from '../navigation'
@@ -15,8 +14,8 @@ export function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="d-flex flex-column min-vh-100">
       <AppNavbar />
-      <main className="flex-grow-1 d-flex flex-column" id="app-main">
-        <Container className="py-4 flex-grow-1">{children}</Container>
+      <main className="flex-grow-1" id="app-main">
+        {children}
       </main>
     </div>
   )

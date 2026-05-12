@@ -1,11 +1,318 @@
-/* App-specific tweaks; Bootstrap provides base layout and Reboot. */
-#app-main {
-  min-height: 0;
+:root {
+  --library-brown: #b98558;
+  --library-brown-dark: #9f6b46;
+  --library-green: #2f7d68;
+  --library-ink: #21312d;
 }
 
-h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
+body {
+  background: var(--library-brown);
+  color: var(--library-ink);
+}
+
+.navbar {
+  background-color: #e8ccae !important;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  background: #183d2b;
+}
+
+.search-form {
+  min-width: min(100%, 260px);
+}
+
+.library-hero,
+.page-section {
+  background: linear-gradient(180deg, var(--library-brown), var(--library-brown-dark));
+}
+
+.library-scene {
+  aspect-ratio: 3 / 2;
+  max-width: min(100%, calc((100vh - 130px) * 1.5));
+  background: #2b1a10;
+}
+
+.library-photo {
+  object-fit: contain;
+}
+
+.hotspot-button,
+.help-hotspot {
+  position: absolute;
+  z-index: 4;
+}
+
+.retro-button {
+  border: 2px solid #9b6a32 !important;
+  border-radius: 0.35rem;
+  background-color: #182127 !important;
+  background-image: none;
+  box-shadow: none !important;
+  color: #f6dfb8 !important;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.015em;
+  text-transform: none;
+}
+
+.retro-icon {
+  color: #f3dfbc;
+  flex: 0 0 auto;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.book-icon {
+  display: inline-block;
+  position: relative;
+  width: 1.65rem;
+  height: 1.25rem;
+  color: #d8a44b;
+}
+
+.book-icon span {
+  position: absolute;
+  top: 0.08rem;
+  bottom: 0.18rem;
+  width: 48%;
+  border: 2px solid currentColor;
+  border-bottom: 0;
+  background: transparent;
+}
+
+.book-icon span:first-child {
+  left: 0;
+  border-right: 1px solid currentColor;
+  border-radius: 0.28rem 0.04rem 0 0.18rem;
+  transform: skewY(4deg);
+}
+
+.book-icon span:last-child {
+  right: 0;
+  border-left: 1px solid currentColor;
+  border-radius: 0.04rem 0.28rem 0.18rem 0;
+  transform: skewY(-4deg);
+}
+
+.book-icon::before {
+  position: absolute;
+  top: 0.1rem;
+  bottom: 0.18rem;
+  left: 50%;
+  width: 1px;
+  background: currentColor;
+  content: '';
+}
+
+.book-icon::after {
+  position: absolute;
+  right: 0.08rem;
+  bottom: 0.08rem;
+  left: 0.08rem;
+  height: 0.28rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-radius: 0 0 0.45rem 0.45rem;
+  background: transparent;
+  content: '';
+}
+
+.retro-button .fw-bold {
+  color: #f8e6c7;
+  font-size: 0.9rem;
+  font-variant: small-caps;
+  font-weight: 600 !important;
+  letter-spacing: 0.035em;
+}
+
+.retro-button small {
+  color: #d8b982;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-size: 0.62rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.retro-button:hover,
+.retro-button:focus-visible {
+  border-color: #f1d18a !important;
+  filter: brightness(1.06);
+  outline: 2px solid rgba(202, 164, 95, 0.32);
+  outline-offset: 2px;
+}
+
+.shelf-link {
+  background-color: #183d2b !important;
+  left: 38%;
+  top: 34%;
+  width: 30%;
+}
+
+.chair-link {
+  background-color: #5b1f1b !important;
+  left: 68%;
+  top: 69%;
+  width: 22%;
+}
+
+.desk-link {
+  background-color: #344044 !important;
+  left: 3%;
+  top: 75%;
+  width: 25%;
+}
+
+.contact-link {
+  z-index: 6;
+  left: 78%;
+  top: 42%;
+  width: 16%;
+  background-color: #b98558 !important;
+  color: #3a2414 !important;
+  border-color: #8a5a35 !important;
+  gap: 0.35rem !important;
+  padding: 0.32rem 0.45rem !important;
+  align-items: center !important;
+}
+
+.contact-link .retro-icon,
+.contact-link .fw-bold,
+.contact-link small {
+  color: #3a2414 !important;
+}
+
+.contact-link .fw-bold {
+  font-size: 0.72rem;
+}
+
+.contact-link small {
+  font-size: 0.48rem;
+}
+
+.chair-link .retro-icon {
+  color: #f2c15d;
+  font-size: 1.25rem;
+}
+
+.chair-link .fw-bold {
+  font-size: 0.78rem;
+}
+
+.chair-link small {
+  font-size: 0.56rem;
+}
+
+.help-hotspot {
+  right: 1.2%;
+  top: 1.2%;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #9b6a32 !important;
+  background-color: #344044 !important;
+  color: #f6dfb8 !important;
+}
+
+.scroll-controls {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  gap: 0.6rem;
+}
+
+.scroll-controls .btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50% !important;
+}
+
+.scroll-button {
+  border: 1px solid #9b6a32 !important;
+  background-color: #344044 !important;
+  color: #f6dfb8 !important;
+  box-shadow: 0 6px 14px rgba(29, 17, 9, 0.24);
+}
+
+.scroll-button:hover,
+.scroll-button:focus-visible {
+  background-color: #3f4b4f !important;
+  color: #fff4dc !important;
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+  border-color: #9b6a32 !important;
+  background-color: #344044 !important;
+  color: #f6dfb8 !important;
+}
+
+.footer-warm-gray {
+  background-color: #344044 !important;
+  color: #f6dfb8 !important;
+}
+
+@media (max-width: 640px) {
+  .library-scene {
+    max-width: 100%;
+  }
+
+  .hotspot-button {
+    gap: 0.35rem !important;
+    min-width: 0;
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.62rem;
+    line-height: 1.1;
+  }
+
+  .hotspot-button small {
+    font-size: 0.5rem;
+  }
+
+  .help-hotspot {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+  }
+
+  .retro-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .shelf-link {
+    left: 34%;
+    top: 33%;
+    width: 34%;
+  }
+
+  .chair-link {
+    left: 63%;
+    top: 69%;
+    width: 31%;
+  }
+
+  .desk-link {
+    left: 2%;
+    top: 74%;
+    width: 31%;
+  }
+
+  .contact-link {
+    left: 76%;
+    top: 41%;
+    width: 19%;
+  }
 }
 
 /* Aurora theme (ported from Biblioteca-interactiva design) */

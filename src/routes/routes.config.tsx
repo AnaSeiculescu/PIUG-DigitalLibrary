@@ -1,19 +1,18 @@
 import type { ReactElement } from 'react'
 
-import { Home } from '../pages/Home'
 import { Catalog } from '../pages/Catalog'
-import { Inscriere } from '../pages/Inscriere'
+import { Home } from '../pages/Home'
 import { Program } from '../pages/Program'
-import { Recomandari } from '../pages/Recomandari'
+import { Recommendations } from '../pages/Recommendations'
 import { SignIn } from '../pages/SignIn'
 
 /** Reuse these in `<Link>`, `navigate()`, and tests so paths stay in one place. */
 export const paths = {
   home: '/',
   catalog: '/catalog',
-  recomandari: '/recomandari',
+  recommendations: '/recomandari',
   program: '/program',
-  inscriere: '/inscriere',
+  inscriere: '/sign-in',
   signIn: '/sign-in',
 } as const
 
@@ -33,8 +32,7 @@ export type AppRouteConfig = {
 export const appRoutes: AppRouteConfig[] = [
   { id: 'home', path: paths.home, element: <Home /> },
   { id: 'catalog', path: paths.catalog, element: <Catalog /> },
-  { id: 'recomandari', path: paths.recomandari, element: <Recomandari /> },
+  { id: 'recommendations', path: paths.recommendations, element: <Recommendations /> },
   { id: 'program', path: paths.program, element: <Program /> },
-  { id: 'inscriere', path: paths.inscriere, element: <Inscriere /> },
   { id: 'signIn', path: paths.signIn, element: <SignIn /> },
 ]

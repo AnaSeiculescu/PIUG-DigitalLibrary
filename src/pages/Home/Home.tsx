@@ -1,115 +1,63 @@
-import { Button, Card, Col, Row } from 'react-bootstrap'
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { Col, Container, Row } from 'react-bootstrap'
 
-import { paths } from '../../routes/routes.config'
-import { HelpModal, ScrollControls } from '../../components/ui'
-import bibliotecaImg from '../../assets/biblioteca-interactiva.png'
+import { HelpModal, LibraryHero, ScrollControls } from './components'
 
 export function Home() {
   const [showHelp, setShowHelp] = useState(false)
-  const navigate = useNavigate()
 
   return (
-    <div className="w-100">
-      <div className="position-relative aurora-hero mb-4">
-        <div className="aurora-hero-title">Alege o zona din biblioteca</div>
-        <img
-          src={bibliotecaImg}
-          alt="Biblioteca Aurora"
-          className="aurora-hero-img"
-        />
-        <div className="aurora-hero-overlay" aria-hidden="true" />
+    <>
+      <LibraryHero onOpenHelp={() => setShowHelp(true)} />
 
-        <button
-          type="button"
-          className="aurora-hotspot aurora-hotspot--catalog"
-          aria-label="Raftul deschide catalogul"
-          onClick={() => navigate(paths.catalog)}
-        />
-        <button
-          type="button"
-          className="aurora-hotspot aurora-hotspot--recomandari"
-          aria-label="Fotoliul duce la recomandari"
-          onClick={() => navigate(paths.recomandari)}
-        />
-        <button
-          type="button"
-          className="aurora-hotspot aurora-hotspot--program"
-          aria-label="Afisul arata programul"
-          onClick={() => navigate(paths.program)}
-        />
-        <button
-          type="button"
-          className="aurora-hotspot aurora-hotspot--inscriere"
-          aria-label="Biroul deschide inscrierea"
-          onClick={() => navigate(paths.inscriere)}
-        />
+      <section className="page-section py-4 py-md-5">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={8}>
+              <h1 className="h2 fw-bold text-white">Despre biblioteca</h1>
+              <p className="lead mb-0 text-white">
+                Biblioteca Aurora este un spatiu modern pentru lectura, studiu si
+                descoperire. Pagina de acasa foloseste repere vizuale familiare
+                pentru ca vizitatorii sa inteleaga rapid unde pot merge si ce
+                actiune pot face.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        <div className="aurora-help-fab">
-          <Button
-            variant="dark"
-            className="rounded-circle"
-            style={{ width: 44, height: 44 }}
-            aria-label="Ajutor rapid"
-            onClick={() => setShowHelp(true)}
-          >
-            ?
-          </Button>
-        </div>
-      </div>
-
-      <Row xs={1} md={2} className="g-3">
-        <Col>
-          <Card className="h-100">
-            <Card.Body>
-              <Card.Title>Despre biblioteca</Card.Title>
-              <Card.Text className="text-muted">
-                Pagina de acasa foloseste repere familiare pentru ca vizitatorii sa inteleaga
-                rapid unde pot merge si ce actiune pot face.
-              </Card.Text>
-              <div className="d-flex gap-2 flex-wrap">
-                <Button
-                  variant="outline-success"
-                  onClick={() => navigate(paths.recomandari)}
-                >
-                  Recomandari
-                </Button>
-                <Button variant="outline-success" onClick={() => navigate(paths.program)}>
-                  Program
-                </Button>
-                <Button variant="outline-success" onClick={() => navigate(paths.inscriere)}>
-                  Inscriere
-                </Button>
+      <section className="page-section py-4 py-md-5">
+        <Container>
+          <Row className="align-items-center gy-3">
+            <Col md>
+              <h2 className="h3 fw-bold text-white">Social media</h2>
+              <p className="mb-0 text-white">Urmareste noutatile bibliotecii si evenimentele de lectura.</p>
+            </Col>
+            <Col md="auto">
+              <div className="d-flex gap-2" aria-label="Linkuri social media">
+                <a className="btn btn-dark rounded-circle social-link" href="https://facebook.com">
+                  f
+                </a>
+                <a className="btn btn-dark rounded-circle social-link" href="https://instagram.com">
+                  ig
+                </a>
+                <a className="btn btn-dark rounded-circle social-link" href="https://youtube.com">
+                  yt
+                </a>
               </div>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card className="h-100">
-            <Card.Body>
-              <Card.Title>Social media</Card.Title>
-              <Card.Text className="text-muted">
-                Urmareste noutatile bibliotecii si evenimentele de lectura.
-              </Card.Text>
-              <div className="d-flex gap-2 flex-wrap">
-                <Button variant="dark" size="sm" as="a" href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-                  Facebook
-                </Button>
-                <Button variant="dark" size="sm" as="a" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                  Instagram
-                </Button>
-                <Button variant="dark" size="sm" as="a" href="https://www.youtube.com/" target="_blank" rel="noreferrer">
-                  YouTube
-                </Button>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-      <HelpModal show={showHelp} onHide={() => setShowHelp(false)} />
+      <footer className="footer-warm-gray py-3 text-center">
+        <Container>
+          <small>&copy; 2026 Biblioteca Aurora. Site demonstrativ pentru proiectarea interfetelor.</small>
+        </Container>
+      </footer>
+
       <ScrollControls />
-    </div>
+      <HelpModal onHide={() => setShowHelp(false)} show={showHelp} />
+    </>
   )
 }
