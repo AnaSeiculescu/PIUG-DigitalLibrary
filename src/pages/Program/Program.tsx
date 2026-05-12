@@ -58,6 +58,8 @@ export function Program() {
                 Luni - Vineri: 09:00 - 18:00
                 <br />
                 Sambata: 10:00 - 14:00
+                <br />
+                Duminica: inchis
               </Card.Text>
             </Card.Body>
           </Card>
