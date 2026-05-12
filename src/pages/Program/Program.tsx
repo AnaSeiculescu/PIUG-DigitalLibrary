@@ -71,7 +71,12 @@ export function Program() {
                 <br />
                 Telefon: 021 000 0000
               </Card.Text>
-              <Form noValidate validated={validated} onSubmit={handleContactSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onBlur={() => setValidated(true)}
+                onSubmit={handleContactSubmit}
+              >
                 <Row className="g-2">
                   <Col xs={12}>
                     <Form.Label>Nume</Form.Label>
@@ -79,6 +84,7 @@ export function Program() {
                       required
                       autoComplete="name"
                       minLength={3}
+                      pattern=".{3,}"
                       value={contactForm.nume}
                       onChange={(event) =>
                         setContactForm((prev) => ({ ...prev, nume: event.target.value }))

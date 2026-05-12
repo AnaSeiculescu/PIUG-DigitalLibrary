@@ -58,7 +58,12 @@ export function Inscriere() {
                 Placeholder: completeaza campurile. In proiectul final poti adauga validare si
                 salvare.
               </Card.Text>
-              <Form noValidate validated={validated} onSubmit={handleSubmit}>
+              <Form
+                noValidate
+                validated={validated}
+                onBlur={() => setValidated(true)}
+                onSubmit={handleSubmit}
+              >
                 <Row className="g-3">
                   <Col xs={12}>
                     <Form.Label>Nume complet</Form.Label>
@@ -66,6 +71,7 @@ export function Inscriere() {
                       required
                       autoComplete="name"
                       minLength={3}
+                      pattern=".{3,}"
                       value={form.nume}
                       onChange={(e) => setForm((prev) => ({ ...prev, nume: e.target.value }))}
                     />

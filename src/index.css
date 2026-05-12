@@ -319,6 +319,11 @@ body {
   color: #000 !important;
 }
 
+.was-validated .form-control:not(:required):valid {
+  border-color: var(--bs-border-color);
+  background-image: none;
+}
+
 .recommendations-carousel .carousel-control-prev,
 .recommendations-carousel .carousel-control-next {
   width: 2.35rem;

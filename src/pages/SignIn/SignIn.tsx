@@ -20,10 +20,21 @@ export function SignIn() {
     <PageShell eyebrow="Devino membru" title="Inscriere">
       <Card className="border-0 shadow-sm">
         <Card.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form
+            noValidate
+            validated={validated}
+            onBlur={() => setValidated(true)}
+            onSubmit={handleSubmit}
+          >
             <Form.Group className="mb-3" controlId="fullName">
               <Form.Label>Nume complet</Form.Label>
-              <Form.Control required minLength={3} autoComplete="name" placeholder="Numele tau" />
+              <Form.Control
+                required
+                minLength={3}
+                pattern=".{3,}"
+                autoComplete="name"
+                placeholder="Numele tau"
+              />
               <Form.Control.Feedback type="invalid">
                 Introdu un nume de cel putin 3 caractere.
               </Form.Control.Feedback>
