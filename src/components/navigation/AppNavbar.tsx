@@ -14,7 +14,7 @@ export function AppNavbar() {
 
     const formData = new FormData(event.currentTarget)
     const searchTerm = String(formData.get('q') ?? '').trim()
-    const query = searchTerm ? `?q=${encodeURIComponent(searchTerm)}#cautare` : '#cautare'
+    const query = searchTerm ? `?q=${encodeURIComponent(searchTerm)}#rezultate` : '#cautare'
 
     navigate(`${paths.catalog}${query}`)
   }
