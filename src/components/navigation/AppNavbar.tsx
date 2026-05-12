@@ -24,7 +24,7 @@ export function AppNavbar() {
       as="header"
       bg="light"
       className="border-bottom py-2"
-      expand="md"
+      expand="lg"
       role="navigation"
     >
       <Container className="gap-2" fluid="lg">
@@ -47,7 +47,7 @@ export function AppNavbar() {
             <NavAppLink to={paths.signIn}>Inscriere</NavAppLink>
           </Nav>
           <Form
-            className="d-flex gap-2 mt-3 mt-md-0 search-form"
+            className="d-flex gap-2 mt-3 mt-lg-0 search-form"
             onSubmit={handleSearch}
             role="search"
           >

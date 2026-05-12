@@ -12,6 +12,12 @@
 body {
   background: var(--library-brown);
   color: var(--library-ink);
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
 }
 
 .navbar {
@@ -26,6 +32,10 @@ body {
 
 .search-form {
   min-width: min(100%, 260px);
+}
+
+.search-form .form-control {
+  min-width: 0;
 }
 
 .search-submit {
@@ -324,6 +334,14 @@ body {
   background-image: none;
 }
 
+.card {
+  overflow-wrap: anywhere;
+}
+
+.btn {
+  white-space: normal;
+}
+
 .recommendations-carousel .carousel-control-prev,
 .recommendations-carousel .carousel-control-next {
   width: 2.35rem;
@@ -439,6 +457,33 @@ body {
 }
 
 @media (max-width: 640px) {
+  .page-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .display-6 {
+    font-size: 1.85rem;
+  }
+
+  .navbar-brand {
+    max-width: calc(100% - 64px);
+    white-space: normal;
+  }
+
+  .navbar-collapse .nav {
+    gap: 0.25rem;
+    padding-top: 0.75rem;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-submit {
+    flex: 0 0 auto;
+  }
+
   .library-scene {
     max-width: 100%;
   }
@@ -451,8 +496,12 @@ body {
     line-height: 1.1;
   }
 
+  .hotspot-button .fs-4 {
+    font-size: 1rem !important;
+  }
+
   .hotspot-button small {
-    font-size: 0.5rem;
+    display: none !important;
   }
 
   .help-hotspot {
@@ -477,6 +526,12 @@ body {
 
   .recommendation-slide {
     min-height: 0;
+  }
+
+  .program-contact-page .row,
+  .program-contact-page .card,
+  .program-contact-page .form-control {
+    min-width: 0;
   }
 }
 
@@ -508,6 +563,30 @@ body {
     left: 76%;
     top: 41%;
     width: 19%;
+  }
+
+  .library-hero {
+    padding-right: 0.35rem;
+    padding-left: 0.35rem;
+  }
+
+  .hotspot-button {
+    padding: 0.28rem 0.36rem !important;
+    font-size: 0.55rem;
+  }
+
+  .hotspot-button .retro-icon,
+  .hotspot-button .fs-4 {
+    display: none !important;
+  }
+
+  .contact-link {
+    width: 21%;
+  }
+
+  .scroll-controls {
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 }
 
