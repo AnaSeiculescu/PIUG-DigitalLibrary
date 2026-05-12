@@ -1,18 +1,10 @@
 import type { FormEvent } from 'react'
 import { Card, Col, Form, Row } from 'react-bootstrap'
-import { useNavigate, useSearchParams } from 'react-router'
+import { Link, useNavigate, useSearchParams } from 'react-router'
 
 import { PageShell } from '../../components/PageShell'
+import { books, getBookPath } from '../../data/books'
 import { paths } from '../../routes/routes.config'
-
-const books = [
-  'Enigma Otiliei',
-  'Maitreyi',
-  'Ion',
-  'Baltagul',
-  'Morometii',
-  'Romanul adolescentului miop',
-]
 
 export function Catalog() {
   const navigate = useNavigate()
@@ -20,7 +12,7 @@ export function Catalog() {
   const searchTerm = searchParams.get('q')?.trim() ?? ''
   const normalizedSearchTerm = searchTerm.toLocaleLowerCase('ro-RO')
   const visibleBooks = normalizedSearchTerm
-    ? books.filter((book) => book.toLocaleLowerCase('ro-RO').includes(normalizedSearchTerm))
+    ? books.filter((book) => book.title.toLocaleLowerCase('ro-RO').includes(normalizedSearchTerm))
     : books
 
   function handleCatalogSearch(event: FormEvent<HTMLFormElement>) {
@@ -46,13 +38,18 @@ export function Catalog() {
       </Form>
       <Row className="g-3" id="rezultate">
         {visibleBooks.map((book) => (
-          <Col key={book} md={6}>
-            <Card className="h-100 border-0 shadow-sm">
+          <Col key={book.slug} md={6}>
+            <Card className="catalog-card h-100 border-0 shadow-sm">
               <Card.Body>
-                <Card.Title>{book}</Card.Title>
+                <Card.Title>{book.title}</Card.Title>
                 <Card.Text className="text-muted">
-                  Disponibila pentru imprumut la Biblioteca Aurora.
+                  {book.isAvailable
+                    ? 'Disponibila pentru imprumut la Biblioteca Aurora.'
+                    : 'Momentan rezervata. Verifica detaliile pentru recomandari.'}
                 </Card.Text>
+                <Link className="stretched-link" to={getBookPath(book.slug)}>
+                  Vezi detalii
+                </Link>
               </Card.Body>
             </Card>
           </Col>

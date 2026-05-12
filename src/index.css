@@ -395,6 +395,70 @@ svg {
   color: #5e6a65;
 }
 
+.catalog-card {
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.catalog-card:hover,
+.catalog-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(29, 17, 9, 0.18) !important;
+}
+
+.catalog-card .stretched-link {
+  color: transparent;
+  font-size: 0;
+}
+
+.book-details-page h1,
+.book-details-page .text-white,
+.book-details-page .text-white-50 {
+  color: #3a2414 !important;
+}
+
+.book-detail-cover {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 4 / 5.6;
+  min-height: 360px;
+  overflow: hidden;
+  border: 10px solid rgba(255, 244, 220, 0.75);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 42px rgba(29, 17, 9, 0.22);
+  color: #fff4dc;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+}
+
+.book-detail-cover::before {
+  position: absolute;
+  inset: 1.35rem;
+  border: 2px solid rgba(255, 244, 220, 0.62);
+  border-radius: 0.35rem;
+  content: '';
+}
+
+.book-detail-cover__title,
+.book-detail-cover__author {
+  position: relative;
+  z-index: 1;
+}
+
+.book-detail-cover__title {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.book-detail-cover__author {
+  align-self: flex-end;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .book-cover {
   position: relative;
   display: flex;
@@ -532,6 +596,10 @@ svg {
   .program-contact-page .card,
   .program-contact-page .form-control {
     min-width: 0;
+  }
+
+  .book-detail-cover {
+    min-height: 320px;
   }
 }
 

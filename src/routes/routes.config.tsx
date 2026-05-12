@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react'
 
+import { BookDetails } from '../pages/BookDetails'
 import { Catalog } from '../pages/Catalog'
 import { Home } from '../pages/Home'
 import { Program } from '../pages/Program'
@@ -10,6 +11,7 @@ import { SignIn } from '../pages/SignIn'
 export const paths = {
   home: '/',
   catalog: '/catalog',
+  bookDetails: '/catalog/:bookSlug',
   recommendations: '/recomandari',
   program: '/program',
   inscriere: '/sign-in',
@@ -32,6 +34,7 @@ export type AppRouteConfig = {
 export const appRoutes: AppRouteConfig[] = [
   { id: 'home', path: paths.home, element: <Home /> },
   { id: 'catalog', path: paths.catalog, element: <Catalog /> },
+  { id: 'bookDetails', path: paths.bookDetails, element: <BookDetails /> },
   { id: 'recommendations', path: paths.recommendations, element: <Recommendations /> },
   { id: 'program', path: paths.program, element: <Program /> },
   { id: 'signIn', path: paths.signIn, element: <SignIn /> },
