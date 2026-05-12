@@ -3,6 +3,10 @@
   --library-brown-dark: #9f6b46;
   --library-green: #2f7d68;
   --library-ink: #21312d;
+  --library-dark-brown: #3a2414;
+  --library-walnut: #5b3923;
+  --library-espresso: #251309;
+  --library-dark-walnut: #9b7452;
 }
 
 body {
@@ -158,14 +162,14 @@ body {
 }
 
 .shelf-link {
-  background-color: #183d2b !important;
+  background-color: #345728 !important;
   left: 38%;
   top: 34%;
-  width: 30%;
+  width: 25%;
 }
 
 .shelf-link .fw-bold {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
 }
 
 .chair-link {
@@ -176,10 +180,35 @@ body {
 }
 
 .desk-link {
-  background-color: #344044 !important;
+  background-color: var(--library-dark-walnut) !important;
+  color: #3a2414 !important;
   left: 3%;
   top: 75%;
   width: 25%;
+}
+
+.desk-link .retro-icon,
+.desk-link .fw-bold,
+.desk-link small {
+  color: #3a2414 !important;
+}
+
+.home-section-title,
+.home-section-text {
+  color: var(--library-dark-brown) !important;
+}
+
+.social-section {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.social-section .h3 {
+  font-size: 1.45rem;
+}
+
+.social-section p {
+  font-size: 0.98rem;
 }
 
 .contact-link {
@@ -187,9 +216,9 @@ body {
   left: 78%;
   top: 42%;
   width: 16%;
-  background-color: #b98558 !important;
+  background-color: #d0a87f !important;
   color: #3a2414 !important;
-  border-color: #8a5a35 !important;
+  border-color: #b98558 !important;
   gap: 0.35rem !important;
   padding: 0.32rem 0.45rem !important;
   align-items: center !important;
@@ -229,7 +258,7 @@ body {
   width: 44px;
   height: 44px;
   border: 1px solid #9b6a32 !important;
-  background-color: #344044 !important;
+  background-color: var(--library-espresso) !important;
   color: #f6dfb8 !important;
 }
 
@@ -249,14 +278,14 @@ body {
 
 .scroll-button {
   border: 1px solid #9b6a32 !important;
-  background-color: #344044 !important;
+  background-color: var(--library-espresso) !important;
   color: #f6dfb8 !important;
   box-shadow: 0 6px 14px rgba(29, 17, 9, 0.24);
 }
 
 .scroll-button:hover,
 .scroll-button:focus-visible {
-  background-color: #3f4b4f !important;
+  background-color: #4a2d1c !important;
   color: #fff4dc !important;
 }
 
@@ -269,7 +298,7 @@ body {
 }
 
 .footer-warm-gray {
-  background-color: #344044 !important;
+  background-color: var(--library-espresso) !important;
   color: #f6dfb8 !important;
 }
 

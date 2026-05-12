@@ -1,5 +1,6 @@
 import { Button, Container } from 'react-bootstrap'
 
+import libraryImage from '../../../assets/biblioteca-interactiva.png'
 import { paths } from '../../../routes/routes.config'
 import { HotspotLink } from './HotspotLink'
 
@@ -15,7 +16,7 @@ export function LibraryHero({ onOpenHelp }: LibraryHeroProps) {
           <img
             alt="Interior de biblioteca cu rafturi, birou, fotoliu si panou de anunturi"
             className="library-photo d-block w-100 h-100"
-            src="/biblioteca-interactiva.png"
+            src={libraryImage}
           />
 
           <HotspotLink ariaLabel="Catalog" className="shelf-link" icon="book" to={paths.catalog}>
