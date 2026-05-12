@@ -50,8 +50,8 @@ export function Program() {
   return (
     <PageShell className="program-contact-page" eyebrow="Informatii utile" title="Program si contact">
       <Row className="g-3">
-        <Col md={6}>
-          <Card className="h-100 border-0 shadow-sm">
+        <Col md={5}>
+          <Card className="border-0 shadow-sm">
             <Card.Body>
               <Card.Title>Programul bibliotecii</Card.Title>
               <Card.Text className="program-contact-text mb-0">
@@ -62,7 +62,7 @@ export function Program() {
             </Card.Body>
           </Card>
         </Col>
-        <Col md={6}>
+        <Col md={7}>
           <Card className="h-100 border-0 shadow-sm" id="contact">
             <Card.Body>
               <Card.Title>Contact</Card.Title>
