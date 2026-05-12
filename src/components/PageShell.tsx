@@ -3,13 +3,14 @@ import { Col, Container, Row } from 'react-bootstrap'
 
 type PageShellProps = {
   children: ReactNode
+  className?: string
   eyebrow?: string
   title: string
 }
 
-export function PageShell({ children, eyebrow, title }: PageShellProps) {
+export function PageShell({ children, className = '', eyebrow, title }: PageShellProps) {
   return (
-    <section className="page-section flex-grow-1 py-5">
+    <section className={`page-section flex-grow-1 py-5 ${className}`.trim()}>
       <Container>
         <Row className="justify-content-center">
           <Col lg={8}>

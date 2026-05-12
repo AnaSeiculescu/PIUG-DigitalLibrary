@@ -273,6 +273,130 @@ body {
   color: #f6dfb8 !important;
 }
 
+.recommendations-carousel {
+  padding: 0 2.75rem 2.6rem;
+}
+
+.recommendations-page h1,
+.recommendations-page .text-white,
+.recommendations-page .text-white-50 {
+  color: #3a2414 !important;
+}
+
+.recommendations-carousel .carousel-control-prev,
+.recommendations-carousel .carousel-control-next {
+  width: 2.35rem;
+}
+
+.recommendations-carousel .carousel-indicators {
+  bottom: -0.85rem;
+  margin-bottom: 0;
+}
+
+.recommendations-carousel .carousel-indicators [data-bs-target] {
+  width: 30px;
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  background-color: #f6dfb8;
+}
+
+.recommendation-slide {
+  min-height: 430px;
+}
+
+.recommendation-section-title {
+  margin-bottom: 1rem;
+  color: #3a2414;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.recommendation-card {
+  overflow: hidden;
+  border: 1px solid rgba(33, 49, 45, 0.14) !important;
+  border-radius: 0.5rem;
+  background: #f8e6c7;
+  box-shadow: 0 16px 30px rgba(29, 17, 9, 0.18);
+  color: var(--library-ink);
+}
+
+.recommendation-card .card-body {
+  min-height: 118px;
+}
+
+.recommendation-card .card-title {
+  margin-bottom: 0.4rem;
+  font-weight: 800;
+}
+
+.recommendation-card .card-text {
+  margin-bottom: 0;
+  color: #5e6a65;
+}
+
+.book-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 5;
+  border-bottom: 4px solid rgba(24, 33, 39, 0.22);
+  color: #fff4dc;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.book-cover::before,
+.book-cover::after {
+  position: absolute;
+  content: '';
+}
+
+.book-cover::before {
+  inset: 14%;
+  border: 2px solid rgba(255, 244, 220, 0.68);
+  border-radius: 0.35rem;
+}
+
+.book-cover::after {
+  right: 16%;
+  bottom: 18%;
+  left: 16%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 244, 220, 0.72);
+}
+
+.book-cover__spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18%;
+  background: rgba(24, 33, 39, 0.22);
+}
+
+.book-cover__mark {
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.04em;
+}
+
+.book-cover--gold {
+  background: linear-gradient(135deg, #b98558, #8a5a35);
+}
+
+.book-cover--green {
+  background: linear-gradient(135deg, #2f7d68, #183d2b);
+}
+
+.book-cover--red {
+  background: linear-gradient(135deg, #7b312a, #4c1d19);
+}
+
 @media (max-width: 640px) {
   .library-scene {
     max-width: 100%;
@@ -298,6 +422,20 @@ body {
 
   .retro-icon {
     font-size: 1.2rem;
+  }
+
+  .recommendations-carousel {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .recommendations-carousel .carousel-control-prev,
+  .recommendations-carousel .carousel-control-next {
+    display: none;
+  }
+
+  .recommendation-slide {
+    min-height: 0;
   }
 }
 
