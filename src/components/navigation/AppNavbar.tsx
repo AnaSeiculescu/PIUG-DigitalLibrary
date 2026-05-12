@@ -57,7 +57,7 @@ export function AppNavbar() {
               placeholder="Cauta o carte"
               type="search"
             />
-            <Button aria-label="Cauta" type="submit" variant="success">
+            <Button aria-label="Cauta" className="search-submit" type="submit" variant="success">
               Cauta
             </Button>
           </Form>

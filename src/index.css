@@ -24,6 +24,18 @@ body {
   min-width: min(100%, 260px);
 }
 
+.search-submit {
+  border-color: #183d2b !important;
+  background-color: #183d2b !important;
+  color: #f8e6c7 !important;
+}
+
+.search-submit:hover,
+.search-submit:focus-visible {
+  border-color: #244f39 !important;
+  background-color: #244f39 !important;
+}
+
 .library-hero,
 .page-section {
   background: linear-gradient(180deg, var(--library-brown), var(--library-brown-dark));
@@ -152,6 +164,10 @@ body {
   width: 30%;
 }
 
+.shelf-link .fw-bold {
+  font-size: 1.05rem;
+}
+
 .chair-link {
   background-color: #5b1f1b !important;
   left: 68%;
@@ -186,7 +202,8 @@ body {
 }
 
 .contact-link .fw-bold {
-  font-size: 0.72rem;
+  font-size: 0.88rem;
+  font-weight: 700 !important;
 }
 
 .contact-link small {
