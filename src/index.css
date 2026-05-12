@@ -312,6 +312,13 @@ body {
   color: #3a2414 !important;
 }
 
+.program-contact-page h1,
+.program-contact-page .text-white,
+.program-contact-page .text-white-50,
+.program-contact-text {
+  color: #000 !important;
+}
+
 .recommendations-carousel .carousel-control-prev,
 .recommendations-carousel .carousel-control-next {
   width: 2.35rem;
