@@ -1,4 +1,5 @@
 import { Alert, Button, Card, Col, Form, Row } from 'react-bootstrap'
+import type { FormEvent } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -21,7 +22,21 @@ const initialState: InscriereForm = {
 export function Inscriere() {
   const [form, setForm] = useState<InscriereForm>(initialState)
   const [submitted, setSubmitted] = useState(false)
+  const [validated, setValidated] = useState(false)
   const navigate = useNavigate()
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setValidated(true)
+
+    if (!event.currentTarget.checkValidity()) {
+      event.stopPropagation()
+      setSubmitted(false)
+      return
+    }
+
+    setSubmitted(true)
+  }
 
   return (
     <div className="w-100">
@@ -43,41 +58,47 @@ export function Inscriere() {
                 Placeholder: completeaza campurile. In proiectul final poti adauga validare si
                 salvare.
               </Card.Text>
-              <Form
-                onSubmit={(event) => {
-                  event.preventDefault()
-                  setSubmitted(true)
-                }}
-              >
+              <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="g-3">
                   <Col xs={12}>
                     <Form.Label>Nume complet</Form.Label>
                     <Form.Control
                       required
+                      autoComplete="name"
+                      minLength={3}
                       value={form.nume}
                       onChange={(e) => setForm((prev) => ({ ...prev, nume: e.target.value }))}
-                      autoComplete="name"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Introdu un nume de cel putin 3 caractere.
+                    </Form.Control.Feedback>
                   </Col>
                   <Col xs={12}>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       required
+                      autoComplete="email"
                       type="email"
                       value={form.email}
                       onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
-                      autoComplete="email"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Introdu o adresa de email valida.
+                    </Form.Control.Feedback>
                   </Col>
                   <Col xs={12}>
                     <Form.Label>Telefon (optional)</Form.Label>
                     <Form.Control
+                      autoComplete="tel"
+                      pattern="^[0-9+()\s-]{7,20}$"
                       value={form.telefon}
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, telefon: e.target.value }))
                       }
-                      autoComplete="tel"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Telefonul poate contine cifre, spatii, +, paranteze sau cratime.
+                    </Form.Control.Feedback>
                   </Col>
                   <Col xs={12}>
                     <Form.Label>Observatii (optional)</Form.Label>
@@ -99,6 +120,7 @@ export function Inscriere() {
                     onClick={() => {
                       setForm(initialState)
                       setSubmitted(false)
+                      setValidated(false)
                     }}
                   >
                     Reseteaza
