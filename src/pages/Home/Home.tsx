@@ -10,12 +10,12 @@ export function Home() {
     <>
       <LibraryHero onOpenHelp={() => setShowHelp(true)} />
 
-      <section className="page-section about-section py-4 py-md-5">
+      <section className="page-section home-info-section py-4 py-md-5">
         <Container>
-          <Row className="justify-content-center">
-            <Col lg={8}>
+          <Row className="align-items-start justify-content-center gy-4 gx-lg-5">
+            <Col lg={7}>
               <h1 className="h2 fw-bold home-section-title">Despre biblioteca</h1>
-              <p className="lead mb-0 fw-bold home-section-text">
+              <p className="lead mb-0 fw-bold home-section-text about-copy">
                 Biblioteca Interactivă este un spațiu digital creat pentru cei
                 care iubesc poveștile, liniștea și bucuria descoperirii unei
                 cărți noi. Printr-o atmosferă caldă și prietenoasă, platforma
@@ -24,27 +24,30 @@ export function Home() {
                 parte din comunitatea bibliotecii.
               </p>
             </Col>
-          </Row>
-        </Container>
-      </section>
-
-      <section className="page-section social-section py-3">
-        <Container>
-          <Row className="align-items-center gy-3">
-            <Col md>
+            <Col className="social-column" lg={3} md={8}>
               <h2 className="h3 fw-bold home-section-title">Social media</h2>
               <p className="mb-0 home-section-text">Urmărește noutățile bibliotecii și evenimentele de lectură.</p>
-            </Col>
-            <Col md="auto">
-              <div className="d-flex gap-2" aria-label="Linkuri social media">
-                <a className="btn btn-dark rounded-circle social-link" href="https://facebook.com">
-                  f
+              <div className="d-flex gap-2 mt-3" aria-label="Linkuri social media">
+                <a
+                  aria-label="Facebook"
+                  className="btn rounded-circle social-link social-link-facebook"
+                  href="https://facebook.com"
+                >
+                  <span className="visually-hidden">Facebook</span>
                 </a>
-                <a className="btn btn-dark rounded-circle social-link" href="https://instagram.com">
-                  ig
+                <a
+                  aria-label="Instagram"
+                  className="btn rounded-circle social-link social-link-instagram"
+                  href="https://instagram.com"
+                >
+                  <span className="visually-hidden">Instagram</span>
                 </a>
-                <a className="btn btn-dark rounded-circle social-link" href="https://youtube.com">
-                  yt
+                <a
+                  aria-label="YouTube"
+                  className="btn rounded-circle social-link social-link-youtube"
+                  href="https://youtube.com"
+                >
+                  <span className="visually-hidden">YouTube</span>
                 </a>
               </div>
             </Col>
