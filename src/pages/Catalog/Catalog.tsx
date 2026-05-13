@@ -26,7 +26,7 @@ export function Catalog() {
   }
 
   return (
-    <PageShell eyebrow="Colectia bibliotecii" title="Catalog">
+    <PageShell className="catalog-page" eyebrow="Colectia bibliotecii" title="Catalog">
       <Form className="mb-4" id="cautare" onSubmit={handleCatalogSearch} role="search">
         <Form.Label>Cauta in catalog</Form.Label>
         <Form.Control
@@ -36,16 +36,39 @@ export function Catalog() {
           type="search"
         />
       </Form>
-      <Row className="g-3" id="rezultate">
+      <Row xs={2} sm={3} lg={4} xl={5} className="g-2" id="rezultate">
         {visibleBooks.map((book) => (
-          <Col key={book.slug} md={6}>
+          <Col key={book.slug}>
             <Card className="catalog-card h-100 border-0 shadow-sm">
+              <div className={`catalog-card-cover book-cover--${book.tone}`}>
+                {book.coverUrl ? (
+                  <img
+                    alt={`Coperta ${book.title}`}
+                    className={`catalog-card-cover__image ${
+                      book.coverMode === 'full' ? 'cover-image--full' : ''
+                    } ${book.coverMode === 'mask-right' ? 'cover-image--mask-right' : ''}`.trim()}
+                    src={book.coverUrl}
+                    onLoad={(event) => {
+                      if (event.currentTarget.naturalWidth < 80) {
+                        event.currentTarget.hidden = true
+                      }
+                    }}
+                    onError={(event) => {
+                      event.currentTarget.hidden = true
+                    }}
+                  />
+                ) : null}
+                <span className="book-cover__spine" />
+                <span className="catalog-card-cover__title">{book.title}</span>
+                <span className="catalog-card-cover__author">{book.author}</span>
+              </div>
               <Card.Body>
                 <Card.Title>{book.title}</Card.Title>
-                <Card.Text className="text-muted">
-                  {book.isAvailable
-                    ? 'Disponibila pentru imprumut la Biblioteca Aurora.'
-                    : 'Momentan rezervata. Verifica detaliile pentru recomandari.'}
+                <Card.Text className="text-muted mb-1">
+                  {book.author} · {book.category}
+                </Card.Text>
+                <Card.Text className="catalog-card-status mb-0">
+                  {book.isAvailable ? 'Disponibila' : 'Indisponibila'}
                 </Card.Text>
                 <Link className="stretched-link" to={getBookPath(book.slug)}>
                   Vezi detalii

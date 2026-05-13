@@ -40,13 +40,30 @@ export function BookDetails() {
       <Row className="g-4 align-items-start">
         <Col md={5}>
           <div className={`book-detail-cover book-cover--${book.tone}`} aria-label={`Coperta ${book.title}`}>
+            {book.coverUrl ? (
+              <img
+                alt={`Coperta ${book.title}`}
+                className={`book-detail-cover__image ${
+                  book.coverMode === 'full' ? 'cover-image--full' : ''
+                } ${book.coverMode === 'mask-right' ? 'cover-image--mask-right' : ''}`.trim()}
+                src={book.coverUrl}
+                onLoad={(event) => {
+                  if (event.currentTarget.naturalWidth < 80) {
+                    event.currentTarget.hidden = true
+                  }
+                }}
+                onError={(event) => {
+                  event.currentTarget.hidden = true
+                }}
+              />
+            ) : null}
             <span className="book-cover__spine" />
             <span className="book-detail-cover__title">{book.title}</span>
             <span className="book-detail-cover__author">{book.author}</span>
           </div>
         </Col>
         <Col md={7}>
-          <Card className="border-0 shadow-sm">
+          <Card className="book-detail-info-card border-0 shadow-sm">
             <Card.Body>
               <div className="d-flex flex-wrap gap-2 mb-3">
                 <Badge bg="success">{book.category}</Badge>
@@ -83,7 +100,7 @@ export function BookDetails() {
         <Row className="g-3">
           {similarBooks.map((similarBook) => (
             <Col key={similarBook.slug} md={4}>
-              <Card className="catalog-card h-100 border-0 shadow-sm">
+              <Card className="catalog-card similar-book-card h-100 border-0 shadow-sm">
                 <Card.Body>
                   <Card.Title>{similarBook.title}</Card.Title>
                   <Card.Text className="text-muted mb-0">
