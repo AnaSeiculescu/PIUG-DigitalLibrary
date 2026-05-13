@@ -469,6 +469,71 @@ svg {
   color: #000 !important;
 }
 
+.program-info-card {
+  border: 1px solid rgba(255, 244, 220, 0.34) !important;
+  background: rgba(255, 244, 220, 0.42) !important;
+  backdrop-filter: blur(4px);
+}
+
+.program-info-card .card-title {
+  color: #111f1b;
+  font-weight: 800;
+}
+
+.program-help-button {
+  border-color: #5b1f1b !important;
+  background-color: #5b1f1b !important;
+  color: #f6dfb8 !important;
+  font-weight: 800;
+}
+
+.program-table {
+  color: #111f1b;
+}
+
+.program-table th,
+.program-table td {
+  border-color: rgba(58, 36, 20, 0.18);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.65rem 0.75rem;
+}
+
+.program-table th {
+  width: 48%;
+  color: #3a2414;
+}
+
+.program-rules {
+  padding-left: 1.15rem;
+  color: #21312d;
+}
+
+.program-rules li + li {
+  margin-top: 0.45rem;
+}
+
+.program-faq .accordion-item {
+  border-color: rgba(58, 36, 20, 0.14);
+  background: transparent;
+}
+
+.program-faq .accordion-button {
+  background: rgba(255, 255, 255, 0.18);
+  color: #111f1b;
+  font-weight: 800;
+}
+
+.program-faq .accordion-button:not(.collapsed) {
+  background: rgba(255, 255, 255, 0.28);
+  color: #5b1f1b;
+  box-shadow: none;
+}
+
+.program-faq .accordion-body {
+  background: rgba(255, 255, 255, 0.14);
+  color: #21312d;
+}
+
 .was-validated .form-control:not(:required):valid {
   border-color: var(--bs-border-color);
   background-image: none;

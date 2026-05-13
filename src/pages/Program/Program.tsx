@@ -1,8 +1,9 @@
 import type { FormEvent } from 'react'
 import { useState } from 'react'
-import { Button, Card, Col, Form, Row } from 'react-bootstrap'
+import { Accordion, Button, Card, Col, Form, Row, Table } from 'react-bootstrap'
 
 import { PageShell } from '../../components/PageShell'
+import { HelpModal } from '../../components/ui'
 
 type ContactForm = {
   email: string
@@ -22,6 +23,7 @@ const initialContactForm: ContactForm = {
 
 export function Program() {
   const [contactForm, setContactForm] = useState<ContactForm>(initialContactForm)
+  const [showHelp, setShowHelp] = useState(false)
   const [validated, setValidated] = useState(false)
 
   function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
@@ -49,23 +51,76 @@ export function Program() {
 
   return (
     <PageShell className="program-contact-page" eyebrow="Informatii utile" title="Program si contact">
+      <div className="d-flex justify-content-end mb-3">
+        <Button className="program-help-button" type="button" onClick={() => setShowHelp(true)}>
+          Help
+        </Button>
+      </div>
+
       <Row className="g-3">
         <Col md={5}>
-          <Card className="border-0 shadow-sm">
+          <Card className="program-info-card border-0 shadow-sm mb-3">
             <Card.Body>
               <Card.Title>Programul bibliotecii</Card.Title>
-              <Card.Text className="program-contact-text mb-0">
-                Luni - Vineri: 09:00 - 18:00
-                <br />
-                Sambata: 10:00 - 14:00
-                <br />
-                Duminica: inchis
-              </Card.Text>
+              <Table className="program-table mb-0" responsive>
+                <tbody>
+                  <tr>
+                    <th>Luni - Vineri</th>
+                    <td>09:00 - 18:00</td>
+                  </tr>
+                  <tr>
+                    <th>Sambata</th>
+                    <td>10:00 - 14:00</td>
+                  </tr>
+                  <tr>
+                    <th>Duminica</th>
+                    <td>Inchis</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Card.Body>
+          </Card>
+          <Card className="program-info-card border-0 shadow-sm mb-3">
+            <Card.Body>
+              <Card.Title>Reguli biblioteca</Card.Title>
+              <ul className="program-rules mb-0">
+                <li>Pastreaza linistea in salile de lectura.</li>
+                <li>Returneaza cartile la data stabilita.</li>
+                <li>Nu deteriora si nu sublinia cartile imprumutate.</li>
+                <li>Anunta bibliotecarul daca ai nevoie de prelungire.</li>
+              </ul>
+            </Card.Body>
+          </Card>
+          <Card className="program-info-card border-0 shadow-sm">
+            <Card.Body>
+              <Card.Title>FAQ</Card.Title>
+              <Accordion className="program-faq" flush>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>Cum imprumut o carte?</Accordion.Header>
+                  <Accordion.Body>
+                    Alege cartea din catalog, verifica disponibilitatea si foloseste butonul de
+                    rezervare din pagina de detalii.
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header>Pot prelungi imprumutul?</Accordion.Header>
+                  <Accordion.Body>
+                    Da, daca volumul nu este rezervat de alt cititor. Trimite un mesaj prin
+                    formularul de contact.
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header>Am nevoie de cont?</Accordion.Header>
+                  <Accordion.Body>
+                    Pentru rezervari si imprumuturi este necesara inscrierea in biblioteca.
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
             </Card.Body>
           </Card>
         </Col>
         <Col md={7}>
-          <Card className="h-100 border-0 shadow-sm" id="contact">
+          <Card className="program-info-card h-100 border-0 shadow-sm" id="contact">
             <Card.Body>
               <Card.Title>Contact</Card.Title>
               <Card.Text className="program-contact-text">
@@ -173,6 +228,8 @@ export function Program() {
           </Card>
         </Col>
       </Row>
+
+      <HelpModal show={showHelp} onHide={() => setShowHelp(false)} />
     </PageShell>
   )
 }
