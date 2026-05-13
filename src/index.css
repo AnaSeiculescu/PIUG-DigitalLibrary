@@ -451,11 +451,11 @@ svg {
 }
 
 .catalog-card {
-  border: 1px solid rgba(255, 244, 220, 0.34) !important;
-  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(255, 244, 220, 0.35) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
   border-radius: 0.25rem;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 8px 18px rgba(29, 17, 9, 0.1) !important;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 8px 18px rgba(29, 17, 9, 0.08) !important;
   transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
@@ -467,12 +467,12 @@ svg {
 
 .catalog-card .card-body {
   margin: 0.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 244, 220, 0.34);
   border-radius: 0.25rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.38);
   color: #21312d;
-  padding: 0.65rem;
-  backdrop-filter: blur(4px);
+  padding: 0.55rem 0.65rem;
+  backdrop-filter: blur(3px);
 }
 
 .catalog-card .card-title {
@@ -484,7 +484,11 @@ svg {
 
 .catalog-card .text-muted {
   color: rgba(33, 49, 45, 0.78) !important;
-  font-size: 0.84rem;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: 0.78rem;
   line-height: 1.25;
 }
 
@@ -501,58 +505,47 @@ svg {
 
 .catalog-card-cover {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: clamp(170px, 20vw, 235px);
+  display: grid;
+  place-items: center;
+  height: clamp(145px, 18vw, 205px);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 244, 220, 0.26);
-  background: rgba(248, 230, 199, 0.28);
-  padding: 0.45rem;
+  border-bottom: 0;
+  background: rgba(255, 244, 220, 0.16);
+  padding: 1rem;
   color: #fff4dc;
   font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  backdrop-filter: blur(2px);
 }
 
 .catalog-card-cover::before {
   position: absolute;
-  inset: 0.8rem;
-  border: 1px solid rgba(255, 244, 220, 0.56);
+  inset: 0.65rem;
+  border: 1px solid rgba(255, 244, 220, 0.42);
   border-radius: 0.25rem;
   content: '';
 }
 
-.catalog-card-cover:has(.catalog-card-cover__image:not([hidden])) {
-  background: rgba(255, 255, 255, 0.46);
-}
-
-.catalog-card-cover:has(.catalog-card-cover__image:not([hidden]))::before {
-  display: none;
-}
-
 .catalog-card-cover__title,
-.catalog-card-cover__author {
+.catalog-card-cover__author,
+.catalog-card-cover__initials {
   position: relative;
   z-index: 1;
 }
 
-.catalog-card-cover__image {
-  position: absolute;
-  inset: 0.25rem;
-  z-index: 3;
-  width: calc(100% - 0.5rem);
-  height: calc(100% - 0.5rem);
-  object-fit: contain;
-  object-position: top center;
-  background: rgba(248, 230, 199, 0.18);
-  border-radius: 0.35rem 0.35rem 0 0;
-  transform: none;
-  transform-origin: center center;
-}
-
-.catalog-card-cover__image:not([hidden]) ~ .book-cover__spine,
-.catalog-card-cover__image:not([hidden]) ~ .catalog-card-cover__title,
-.catalog-card-cover__image:not([hidden]) ~ .catalog-card-cover__author {
-  display: none;
+.catalog-card-cover__initials {
+  display: grid;
+  place-items: center;
+  width: clamp(4.7rem, 9vw, 6.8rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 244, 220, 0.34);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 30px rgba(255, 244, 220, 0.08);
+  color: rgba(255, 244, 220, 0.94);
+  font-size: clamp(1.6rem, 4vw, 2.55rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-align: center;
 }
 
 .catalog-card-cover__title {
@@ -590,6 +583,8 @@ svg {
   box-shadow: 0 14px 30px rgba(29, 17, 9, 0.16);
   color: #fff4dc;
   font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  background-color: rgba(255, 244, 220, 0.16);
+  backdrop-filter: blur(3px);
 }
 
 .book-detail-cover::before {
@@ -601,56 +596,27 @@ svg {
 }
 
 .book-detail-cover__title,
-.book-detail-cover__author {
+.book-detail-cover__author,
+.book-detail-cover__initials {
   position: relative;
   z-index: 1;
 }
 
-.book-detail-cover__image {
-  position: absolute;
-  inset: 0.35rem;
-  z-index: 3;
-  width: calc(100% - 0.7rem);
-  height: calc(100% - 0.7rem);
-  object-fit: cover;
-  object-position: left center;
-  background: rgba(248, 230, 199, 0.18);
-  border-radius: 0.35rem;
-  transform: scale(1.16);
-  transform-origin: left center;
-}
-
-.book-detail-cover__image:not([hidden]) ~ .book-cover__spine,
-.book-detail-cover__image:not([hidden]) ~ .book-detail-cover__title,
-.book-detail-cover__image:not([hidden]) ~ .book-detail-cover__author {
-  display: none;
-}
-
-.cover-image--full {
-  object-fit: contain;
-  object-position: center center;
-  background: rgba(248, 230, 199, 0.24);
-  transform: none;
-  transform-origin: center center;
-}
-
-.cover-image--mask-right {
-  object-fit: contain;
-  object-position: top center;
-  transform: none;
-}
-
-.catalog-card-cover:has(.cover-image--mask-right)::after,
-.book-detail-cover:has(.cover-image--mask-right)::after {
-  position: absolute;
-  top: 0.35rem;
-  right: 0.35rem;
-  bottom: 0.35rem;
-  z-index: 4;
-  width: 0.95rem;
-  border-radius: 0 0.35rem 0 0;
-  background: rgba(248, 230, 199, 0.88);
-  content: '';
+.book-detail-cover__initials {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  width: clamp(6.5rem, 18vw, 9.5rem);
+  aspect-ratio: 1;
+  margin: auto 0;
+  border: 2px solid rgba(255, 244, 220, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 0 40px rgba(255, 244, 220, 0.08);
+  color: rgba(255, 244, 220, 0.95);
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 .book-detail-cover__title {

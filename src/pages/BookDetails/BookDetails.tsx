@@ -3,7 +3,7 @@ import { Alert, Badge, Button, Card, Col, Row } from 'react-bootstrap'
 import { Link, useParams } from 'react-router'
 
 import { PageShell } from '../../components/PageShell'
-import { books, getBookPath } from '../../data/books'
+import { books, getBookInitials, getBookPath } from '../../data/books'
 import { paths } from '../../routes/routes.config'
 
 export function BookDetails() {
@@ -40,24 +40,8 @@ export function BookDetails() {
       <Row className="g-4 align-items-start">
         <Col md={5}>
           <div className={`book-detail-cover book-cover--${book.tone}`} aria-label={`Coperta ${book.title}`}>
-            {book.coverUrl ? (
-              <img
-                alt={`Coperta ${book.title}`}
-                className={`book-detail-cover__image ${
-                  book.coverMode === 'full' ? 'cover-image--full' : ''
-                } ${book.coverMode === 'mask-right' ? 'cover-image--mask-right' : ''}`.trim()}
-                src={book.coverUrl}
-                onLoad={(event) => {
-                  if (event.currentTarget.naturalWidth < 80) {
-                    event.currentTarget.hidden = true
-                  }
-                }}
-                onError={(event) => {
-                  event.currentTarget.hidden = true
-                }}
-              />
-            ) : null}
             <span className="book-cover__spine" />
+            <span className="book-detail-cover__initials">{getBookInitials(book.title)}</span>
             <span className="book-detail-cover__title">{book.title}</span>
             <span className="book-detail-cover__author">{book.author}</span>
           </div>
