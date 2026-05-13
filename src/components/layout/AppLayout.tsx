@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Container } from 'react-bootstrap'
 
 import { AppNavbar } from '../navigation'
 
@@ -17,6 +18,11 @@ export function AppLayout({ children }: AppLayoutProps) {
       <main className="flex-grow-1" id="app-main">
         {children}
       </main>
+      <footer className="footer-warm-gray py-3 text-center">
+        <Container>
+          <small>&copy; 2026 Biblioteca Aurora. Site demonstrativ pentru proiectarea interfetelor.</small>
+        </Container>
+      </footer>
     </div>
   )
 }

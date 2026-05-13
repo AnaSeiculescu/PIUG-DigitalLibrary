@@ -1,4 +1,4 @@
-import { Card, Carousel, Col, Container, Row } from 'react-bootstrap'
+import { Card, Carousel, Col, Row } from 'react-bootstrap'
 
 import { PageShell } from '../../components/PageShell'
 
@@ -31,7 +31,7 @@ const recommendationSections = [
 
 export function Recommendations() {
   return (
-    <>
+    <div className="recommendations-layout">
       <PageShell className="recommendations-page" eyebrow="Explorare" title="Recomandari">
         <Carousel className="recommendations-carousel" interval={6500} pause="hover">
           {recommendationSections.map((section) => (
@@ -58,13 +58,27 @@ export function Recommendations() {
             </Carousel.Item>
           ))}
         </Carousel>
-      </PageShell>
 
-      <footer className="footer-warm-gray recommendations-footer py-3 text-center">
-        <Container>
-          <small>&copy; 2026 Biblioteca Aurora. Site demonstrativ pentru proiectarea interfetelor.</small>
-        </Container>
-      </footer>
-    </>
+        <section className="recommendations-video-section" aria-label="Video recomandari">
+          <div className="recommendations-video-frame">
+            <iframe
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              src="https://www.youtube-nocookie.com/embed/ait2yZrRAds?start=144&end=174&autoplay=1&mute=1&playsinline=1&rel=0&controls=1"
+              title="Video recomandari de lectura"
+            />
+          </div>
+          <div className="recommendations-video-copy">
+            <p>
+              Unele carti se aleg cu mintea, altele cu inima. Recomandarile
+              bibliotecarului sunt pentru serile in care o poveste iti poate tine
+              companie si pentru cititorii care cauta o pagina in care sa se
+              regaseasca.
+            </p>
+          </div>
+        </section>
+      </PageShell>
+    </div>
   )
 }

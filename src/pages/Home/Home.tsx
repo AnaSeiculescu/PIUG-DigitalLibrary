@@ -55,12 +55,6 @@ export function Home() {
         </Container>
       </section>
 
-      <footer className="footer-warm-gray py-3 text-center">
-        <Container>
-          <small>&copy; 2026 Biblioteca Aurora. Site demonstrativ pentru proiectarea interfetelor.</small>
-        </Container>
-      </footer>
-
       <ScrollControls />
       <HelpModal onHide={() => setShowHelp(false)} show={showHelp} />
     </>
