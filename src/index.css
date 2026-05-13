@@ -21,6 +21,7 @@ svg {
 }
 
 .navbar {
+  z-index: 50;
   background-color: #e8ccae !important;
 }
 
@@ -261,6 +262,13 @@ svg {
   font-size: 0.98rem;
 }
 
+.search-link {
+  background-color: #5b1f1b !important;
+  left: 39%;
+  top: 49%;
+  width: 22%;
+}
+
 .chair-link {
   background-color: #5b1f1b !important;
   left: 68%;
@@ -439,6 +447,72 @@ svg {
 .footer-warm-gray {
   background-color: #5b1f1b !important;
   color: #f6dfb8 !important;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-links {
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #f6dfb8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #fff4dc;
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.45rem;
+  justify-content: flex-end;
+}
+
+.how-it-works-section {
+  border-top: 1px solid rgba(255, 244, 220, 0.25);
+}
+
+.how-it-works-item {
+  height: 100%;
+  border: 1px solid rgba(255, 244, 220, 0.28);
+  border-radius: 0.45rem;
+  background: rgba(255, 244, 220, 0.16);
+  padding: 1rem;
+  color: #fff4dc;
+}
+
+.how-it-works-item span {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: #5b1f1b;
+  color: #f6dfb8;
+  font-weight: 800;
+}
+
+.how-it-works-item h3 {
+  color: #fff4dc;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.how-it-works-item p {
+  margin-bottom: 0;
+  color: rgba(255, 244, 220, 0.92);
 }
 
 .recommendations-layout {
@@ -756,8 +830,8 @@ svg {
   display: grid;
   position: relative;
   place-items: center;
-  width: 54px;
-  height: 72px;
+  width: 68px;
+  height: 92px;
   overflow: hidden;
   border: 1px solid rgba(255, 244, 220, 0.44);
   border-radius: 0.2rem;
@@ -782,7 +856,7 @@ svg {
   display: grid;
   position: relative;
   place-items: center;
-  width: 2.2rem;
+  width: 2.65rem;
   aspect-ratio: 1;
   border: 1px solid rgba(255, 244, 220, 0.32);
   border-radius: 50%;
@@ -807,7 +881,7 @@ svg {
 
   .catalog-table tr {
     display: grid;
-    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-columns: 92px minmax(0, 1fr);
     gap: 0.55rem 0.85rem;
     overflow: hidden;
     border: 1px solid rgba(255, 244, 220, 0.32);
@@ -861,8 +935,8 @@ svg {
   }
 
   .book-cover-thumb {
-    width: 58px;
-    height: 78px;
+    width: 72px;
+    height: 96px;
   }
 
   .catalog-book-description {
@@ -1239,6 +1313,12 @@ svg {
     width: 34%;
   }
 
+  .search-link {
+    left: 34%;
+    top: 47%;
+    width: 34%;
+  }
+
   .chair-link {
     left: 63%;
     top: 69%;
@@ -1274,6 +1354,16 @@ svg {
 
   .contact-link {
     width: 21%;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-social {
+    justify-content: center;
   }
 
   .scroll-controls {

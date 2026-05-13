@@ -42,7 +42,7 @@ export function AppNavbar() {
     <Navbar
       as="header"
       bg="light"
-      className="border-bottom py-2"
+      className="border-bottom py-2 sticky-top"
       expand="lg"
       role="navigation"
     >
@@ -60,6 +60,7 @@ export function AppNavbar() {
         <Navbar.Toggle aria-controls="app-main-nav" />
         <Navbar.Collapse id="app-main-nav">
           <Nav className="mx-auto gap-lg-3" navbar>
+            <NavAppLink to={paths.home}>Acasa</NavAppLink>
             <NavAppLink to={paths.catalog}>Catalog</NavAppLink>
             <NavAppLink to={paths.recommendations}>Recomandari</NavAppLink>
             <NavAppLink to={paths.program}>Program</NavAppLink>

@@ -25,6 +25,12 @@ export function LibraryHero({ onOpenHelp }: LibraryHeroProps) {
               <small className="d-block">Descopera colectia</small>
             </span>
           </HotspotLink>
+          <HotspotLink ariaLabel="Cautare carti" className="search-link" icon="⌕" to={`${paths.catalog}#cautare`}>
+            <span className="text-start">
+              <span className="d-block fw-bold">Cautare</span>
+              <small className="d-block">Gaseste rapid</small>
+            </span>
+          </HotspotLink>
           <HotspotLink
             ariaLabel="Recomandari"
             className="chair-link"
