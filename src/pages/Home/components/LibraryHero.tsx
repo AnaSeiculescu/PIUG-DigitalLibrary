@@ -49,6 +49,7 @@ export function LibraryHero({ onOpenHelp }: LibraryHeroProps) {
           >
             <span className="text-start">
               <span className="d-block fw-bold">Contact</span>
+              <small className="d-block">Program</small>
             </span>
           </HotspotLink>
 

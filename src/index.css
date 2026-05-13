@@ -325,9 +325,9 @@ svg {
   left: 78%;
   top: 42%;
   width: 16%;
-  background-color: #f6e4c9 !important;
+  background-color: #e8ccae !important;
   color: #3a2414 !important;
-  border-color: #c48e5d !important;
+  border-color: #c69b74 !important;
   gap: 0.35rem !important;
   padding: 0.32rem 0.45rem !important;
   align-items: center !important;
@@ -345,7 +345,12 @@ svg {
 }
 
 .contact-link small {
-  font-size: 0.48rem;
+  color: #5b3923 !important;
+  font-size: 0.88rem;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 700 !important;
+  letter-spacing: 0.035em;
 }
 
 .chair-link .retro-icon {
