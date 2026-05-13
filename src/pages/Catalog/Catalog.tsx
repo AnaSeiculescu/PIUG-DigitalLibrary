@@ -1,72 +1,174 @@
 import type { FormEvent } from 'react'
-import { Card, Col, Form, Row } from 'react-bootstrap'
+import { Badge, Button, ButtonGroup, Card, Form, Table } from 'react-bootstrap'
 import { Link, useNavigate, useSearchParams } from 'react-router'
 
 import { PageShell } from '../../components/PageShell'
-import { books, getBookInitials, getBookPath } from '../../data/books'
+import {
+  books,
+  catalogCategories,
+  getBookInitials,
+  getBookPath,
+  getCatalogCategoryLabel,
+  type CatalogCategory,
+} from '../../data/books'
 import { paths } from '../../routes/routes.config'
+
+type ActiveCategory = CatalogCategory | 'toate'
 
 export function Catalog() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const searchTerm = searchParams.get('q')?.trim() ?? ''
+  const requestedCategory = searchParams.get('categorie')
+  const activeCategory: ActiveCategory = catalogCategories.some(
+    (category) => category.value === requestedCategory,
+  )
+    ? (requestedCategory as CatalogCategory)
+    : 'toate'
   const normalizedSearchTerm = searchTerm.toLocaleLowerCase('ro-RO')
-  const visibleBooks = normalizedSearchTerm
-    ? books.filter((book) => book.title.toLocaleLowerCase('ro-RO').includes(normalizedSearchTerm))
-    : books
+  const visibleBooks = books.filter((book) => {
+    const matchesCategory =
+      activeCategory === 'toate' || book.catalogCategory === activeCategory
+    const searchableBookText = [
+      book.title,
+      book.author,
+      book.category,
+      getCatalogCategoryLabel(book.catalogCategory),
+    ]
+      .join(' ')
+      .toLocaleLowerCase('ro-RO')
+    const matchesSearch =
+      !normalizedSearchTerm || searchableBookText.includes(normalizedSearchTerm)
+
+    return matchesCategory && matchesSearch
+  })
+
+  function buildCatalogUrl(nextSearchTerm: string, nextCategory: ActiveCategory) {
+    const nextSearchParams = new URLSearchParams()
+
+    if (nextSearchTerm) {
+      nextSearchParams.set('q', nextSearchTerm)
+    }
+
+    if (nextCategory !== 'toate') {
+      nextSearchParams.set('categorie', nextCategory)
+    }
+
+    const query = nextSearchParams.toString()
+
+    return `${paths.catalog}${query ? `?${query}` : ''}#rezultate`
+  }
 
   function handleCatalogSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const formData = new FormData(event.currentTarget)
     const nextSearchTerm = String(formData.get('q') ?? '').trim()
-    const query = nextSearchTerm ? `?q=${encodeURIComponent(nextSearchTerm)}#rezultate` : ''
 
-    navigate(`${paths.catalog}${query}`)
+    navigate(buildCatalogUrl(nextSearchTerm, activeCategory))
+  }
+
+  function handleCategoryChange(nextCategory: ActiveCategory) {
+    navigate(buildCatalogUrl(searchTerm, nextCategory))
   }
 
   return (
     <PageShell className="catalog-page" eyebrow="Colectia bibliotecii" title="Catalog">
-      <Form className="mb-4" id="cautare" onSubmit={handleCatalogSearch} role="search">
-        <Form.Label>Cauta in catalog</Form.Label>
-        <Form.Control
-          defaultValue={searchTerm}
-          name="q"
-          placeholder="Introdu titlul cartii"
-          type="search"
-        />
-      </Form>
-      <Row xs={2} sm={3} lg={4} xl={5} className="g-2" id="rezultate">
-        {visibleBooks.map((book) => (
-          <Col key={book.slug}>
-            <Card className="catalog-card h-100 border-0 shadow-sm">
-              <div className={`catalog-card-cover book-cover--${book.tone}`}>
-                <span className="book-cover__spine" />
-                <span className="catalog-card-cover__initials">{getBookInitials(book.title)}</span>
-              </div>
-              <Card.Body>
-                <Card.Title>{book.title}</Card.Title>
-                <Card.Text className="text-muted mb-0">{book.description}</Card.Text>
-                <Link className="stretched-link" to={getBookPath(book.slug)}>
-                  Vezi detalii
-                </Link>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-        {visibleBooks.length === 0 && (
-          <Col>
-            <Card className="border-0 shadow-sm">
-              <Card.Body>
-                <Card.Title>Nu am gasit cartea cautata</Card.Title>
-                <Card.Text className="text-muted mb-0">
-                  Incearca alt titlu din catalogul Bibliotecii Aurora.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        )}
-      </Row>
+      <div className="catalog-tools mb-4">
+        <Form id="cautare" onSubmit={handleCatalogSearch} role="search">
+          <Form.Label>Cauta in catalog</Form.Label>
+          <div className="d-flex gap-2">
+            <Form.Control
+              defaultValue={searchTerm}
+              name="q"
+              placeholder="Cauta dupa titlu, autor sau categorie"
+              type="search"
+            />
+            <Button className="search-submit" type="submit">
+              Cauta
+            </Button>
+          </div>
+        </Form>
+
+        <div className="catalog-category-filter" aria-label="Categorii catalog">
+          <div className="fw-bold mb-2">Categorii</div>
+          <ButtonGroup className="flex-wrap gap-2">
+            <Button
+              className="catalog-filter-button"
+              type="button"
+              variant={activeCategory === 'toate' ? 'success' : 'outline-light'}
+              onClick={() => handleCategoryChange('toate')}
+            >
+              Toate
+            </Button>
+            {catalogCategories.map((category) => (
+              <Button
+                className="catalog-filter-button"
+                key={category.value}
+                type="button"
+                variant={activeCategory === category.value ? 'success' : 'outline-light'}
+                onClick={() => handleCategoryChange(category.value)}
+              >
+                {category.label}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </div>
+      </div>
+
+      <Card className="catalog-table-card border-0 shadow-sm" id="rezultate">
+        <Card.Body>
+          <Table className="catalog-table align-middle mb-0" responsive>
+            <thead>
+              <tr>
+                <th>Coperta</th>
+                <th>Titlu</th>
+                <th>Autor</th>
+                <th>Categorie</th>
+                <th>Disponibilitate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visibleBooks.map((book) => (
+                <tr key={book.slug}>
+                  <td>
+                    <Link
+                      aria-label={`Vezi detalii pentru ${book.title}`}
+                      className={`book-cover-thumb book-cover--${book.tone}`}
+                      to={getBookPath(book.slug)}
+                    >
+                      <span>{getBookInitials(book.title)}</span>
+                    </Link>
+                  </td>
+                  <td>
+                    <Link className="catalog-book-title" to={getBookPath(book.slug)}>
+                      {book.title}
+                    </Link>
+                    <div className="catalog-book-description">{book.description}</div>
+                  </td>
+                  <td data-label="Autor">{book.author}</td>
+                  <td data-label="Categorie">
+                    <div>{book.category}</div>
+                    <small>{getCatalogCategoryLabel(book.catalogCategory)}</small>
+                  </td>
+                  <td data-label="Disponibilitate">
+                    <Badge bg={book.isAvailable ? 'success' : 'secondary'}>
+                      {book.isAvailable ? 'Disponibila' : 'Indisponibila'}
+                    </Badge>
+                  </td>
+                </tr>
+              ))}
+              {visibleBooks.length === 0 ? (
+                <tr>
+                  <td className="text-center py-4" colSpan={5}>
+                    Nu am gasit carti pentru criteriile alese.
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
     </PageShell>
   )
 }

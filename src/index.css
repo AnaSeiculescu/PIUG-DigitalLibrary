@@ -587,6 +587,225 @@ svg {
   max-width: 100%;
 }
 
+.catalog-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.catalog-category-filter {
+  color: #fff4dc;
+}
+
+.catalog-filter-button {
+  border-radius: 0.35rem !important;
+  font-weight: 700;
+}
+
+.catalog-table-card {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+
+.catalog-table-card .card-body {
+  padding: 0;
+}
+
+.catalog-table {
+  min-width: 760px;
+  border-collapse: separate;
+  border-spacing: 0 0.85rem;
+  color: #21312d;
+}
+
+.catalog-table th {
+  border: 0;
+  background: transparent;
+  color: rgba(58, 36, 20, 0.72);
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.catalog-table td {
+  border: 0;
+  background: rgba(255, 244, 220, 0.24);
+  padding: 0.9rem 0.75rem;
+  box-shadow: 0 10px 22px rgba(29, 17, 9, 0.07);
+}
+
+.catalog-table tbody td:first-child {
+  border-left: 1px solid rgba(255, 244, 220, 0.3);
+  border-top-left-radius: 0.35rem;
+  border-bottom-left-radius: 0.35rem;
+}
+
+.catalog-table tbody td:last-child {
+  border-right: 1px solid rgba(255, 244, 220, 0.3);
+  border-top-right-radius: 0.35rem;
+  border-bottom-right-radius: 0.35rem;
+}
+
+.catalog-table tbody td {
+  border-top: 1px solid rgba(255, 244, 220, 0.3);
+  border-bottom: 1px solid rgba(255, 244, 220, 0.3);
+}
+
+.catalog-table tbody tr:hover td {
+  background: rgba(255, 244, 220, 0.38);
+}
+
+.catalog-book-title {
+  color: #111f1b;
+  font-size: 1.02rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.catalog-book-description {
+  display: -webkit-box;
+  max-width: 34rem;
+  margin-top: 0.32rem;
+  overflow: hidden;
+  color: rgba(33, 49, 45, 0.76);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.catalog-book-title:hover,
+.catalog-book-title:focus-visible {
+  color: #5b1f1b;
+  text-decoration: underline;
+}
+
+.catalog-table small {
+  color: rgba(33, 49, 45, 0.72);
+  font-weight: 700;
+}
+
+.book-cover-thumb {
+  display: grid;
+  position: relative;
+  place-items: center;
+  width: 54px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 244, 220, 0.44);
+  border-radius: 0.2rem;
+  color: rgba(255, 244, 220, 0.95);
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.book-cover-thumb::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.42rem;
+  background: rgba(24, 33, 39, 0.2);
+  content: '';
+}
+
+.book-cover-thumb span {
+  display: grid;
+  position: relative;
+  place-items: center;
+  width: 2.2rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 244, 220, 0.32);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 767px) {
+  .catalog-table {
+    display: block;
+    min-width: 0;
+    border-spacing: 0;
+  }
+
+  .catalog-table thead {
+    display: none;
+  }
+
+  .catalog-table tbody {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .catalog-table tr {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 0.55rem 0.85rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 244, 220, 0.32);
+    border-radius: 0.45rem;
+    background: rgba(255, 244, 220, 0.22);
+    box-shadow: 0 10px 22px rgba(29, 17, 9, 0.08);
+  }
+
+  .catalog-table td,
+  .catalog-table tbody td:first-child,
+  .catalog-table tbody td:last-child {
+    display: block;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .catalog-table tbody tr:hover td {
+    background: transparent;
+  }
+
+  .catalog-table td:first-child {
+    grid-row: 1 / span 4;
+    padding: 0.65rem 0 0.65rem 0.65rem;
+  }
+
+  .catalog-table td:nth-child(2) {
+    padding: 0.7rem 0.7rem 0 0;
+  }
+
+  .catalog-table td[data-label] {
+    color: rgba(17, 31, 27, 0.9);
+    font-size: 0.9rem;
+  }
+
+  .catalog-table td[data-label]::before {
+    display: block;
+    margin-bottom: 0.1rem;
+    color: rgba(58, 36, 20, 0.62);
+    content: attr(data-label);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .catalog-table td:last-child {
+    padding: 0 0.7rem 0.7rem 0;
+  }
+
+  .book-cover-thumb {
+    width: 58px;
+    height: 78px;
+  }
+
+  .catalog-book-description {
+    -webkit-line-clamp: 3;
+    font-size: 0.8rem;
+  }
+}
+
 .catalog-card {
   border: 1px solid rgba(255, 244, 220, 0.35) !important;
   background: rgba(255, 255, 255, 0.12) !important;
