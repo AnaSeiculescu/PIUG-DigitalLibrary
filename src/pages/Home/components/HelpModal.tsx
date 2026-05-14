@@ -15,7 +15,6 @@ export function HelpModal({ onHide, show }: HelpModalProps) {
         <p>Foloseste zonele marcate din imagine pentru a naviga rapid.</p>
         <ul className="mb-0">
           <li>Catalogul deschide colectia de carti.</li>
-          <li>Cautarea te duce direct la formularul de cautare din catalog.</li>
           <li>Recomandarile duc la carti alese pentru tine.</li>
           <li>Inscrierea deschide pagina pentru membri noi.</li>
           <li>Contactul duce la informatiile bibliotecii.</li>
