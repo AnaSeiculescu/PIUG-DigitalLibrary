@@ -336,8 +336,8 @@ svg {
 
 .home-reading-image {
   display: block;
-  width: min(100%, 270px);
-  max-height: 360px;
+  width: min(100%, 220px);
+  max-height: 300px;
   border: 1px solid rgba(255, 244, 220, 0.28);
   border-radius: 0.35rem;
   object-fit: cover;
