@@ -60,12 +60,15 @@ svg {
   box-shadow: 0 0 0 0.2rem rgba(91, 31, 27, 0.22);
 }
 
+.search-submit,
 .search-form .search-submit {
   border-color: #5b1f1b !important;
   background-color: #5b1f1b !important;
   color: #f8e6c7 !important;
 }
 
+.search-submit:hover,
+.search-submit:focus-visible,
 .search-form .search-submit:hover,
 .search-form .search-submit:focus-visible {
   border-color: #6b2823 !important;
@@ -774,30 +777,30 @@ svg {
 
 .catalog-table td {
   border: 0;
-  background: rgba(255, 244, 220, 0.24);
+  background: rgba(255, 244, 220, 0.46);
   padding: 0.9rem 0.75rem;
   box-shadow: 0 10px 22px rgba(29, 17, 9, 0.07);
 }
 
 .catalog-table tbody td:first-child {
-  border-left: 1px solid rgba(255, 244, 220, 0.3);
+  border-left: 1px solid rgba(255, 244, 220, 0.52);
   border-top-left-radius: 0.35rem;
   border-bottom-left-radius: 0.35rem;
 }
 
 .catalog-table tbody td:last-child {
-  border-right: 1px solid rgba(255, 244, 220, 0.3);
+  border-right: 1px solid rgba(255, 244, 220, 0.52);
   border-top-right-radius: 0.35rem;
   border-bottom-right-radius: 0.35rem;
 }
 
 .catalog-table tbody td {
-  border-top: 1px solid rgba(255, 244, 220, 0.3);
-  border-bottom: 1px solid rgba(255, 244, 220, 0.3);
+  border-top: 1px solid rgba(255, 244, 220, 0.52);
+  border-bottom: 1px solid rgba(255, 244, 220, 0.52);
 }
 
 .catalog-table tbody tr:hover td {
-  background: rgba(255, 244, 220, 0.38);
+  background: rgba(255, 244, 220, 0.62);
 }
 
 .catalog-book-title {
