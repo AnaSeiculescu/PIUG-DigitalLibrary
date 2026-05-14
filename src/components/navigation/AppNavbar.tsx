@@ -42,7 +42,7 @@ export function AppNavbar() {
     <Navbar
       as="header"
       bg="light"
-      className="border-bottom py-2 sticky-top"
+      className="border-bottom py-2 fixed-top"
       expand="lg"
       role="navigation"
     >

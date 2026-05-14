@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+#root {
+  padding-top: 74px;
+}
+
 img,
 svg {
   max-width: 100%;
@@ -1201,6 +1205,10 @@ svg {
 }
 
 @media (max-width: 640px) {
+  #root {
+    padding-top: 58px;
+  }
+
   .page-section {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
