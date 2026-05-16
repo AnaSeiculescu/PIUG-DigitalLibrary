@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react'
 import { useState } from 'react'
-import { Accordion, Button, Card, Col, Form, Row, Table } from 'react-bootstrap'
+import { Accordion, Alert, Button, Card, Col, Form, Row, Table } from 'react-bootstrap'
 
 import { PageShell } from '../../components/PageShell'
 import { HelpModal } from '../../components/ui'
@@ -24,6 +24,7 @@ const initialContactForm: ContactForm = {
 export function Program() {
   const [contactForm, setContactForm] = useState<ContactForm>(initialContactForm)
   const [showHelp, setShowHelp] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
   const [validated, setValidated] = useState(false)
 
   function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
@@ -32,21 +33,11 @@ export function Program() {
 
     if (!event.currentTarget.checkValidity()) {
       event.stopPropagation()
+      setSubmitted(false)
       return
     }
 
-    const subject = contactForm.subiect || 'Mesaj pentru Biblioteca Aurora'
-    const body = [
-      `Nume: ${contactForm.nume}`,
-      `Email: ${contactForm.email}`,
-      `Telefon: ${contactForm.telefon || 'Nespecificat'}`,
-      '',
-      contactForm.mesaj,
-    ].join('\n')
-
-    window.location.href = `mailto:biblioteca@aurora.ro?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
+    setSubmitted(true)
   }
 
   return (
@@ -208,6 +199,11 @@ export function Program() {
                     </Form.Control.Feedback>
                   </Col>
                 </Row>
+                {submitted ? (
+                  <Alert className="mt-3 mb-0" variant="success">
+                    Email trimis cu succes. Multumim, {contactForm.nume}.
+                  </Alert>
+                ) : null}
                 <div className="d-flex gap-2 mt-3">
                   <Button type="submit" variant="success">
                     Trimite email
@@ -217,6 +213,7 @@ export function Program() {
                     variant="outline-secondary"
                     onClick={() => {
                       setContactForm(initialContactForm)
+                      setSubmitted(false)
                       setValidated(false)
                     }}
                   >

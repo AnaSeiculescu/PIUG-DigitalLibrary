@@ -24,14 +24,30 @@ const initialForm: SignInForm = {
   userType: '',
 }
 
+const allFormKeys = Object.keys(initialForm) as (keyof SignInForm)[]
+
+function phoneIsValid(value: string) {
+  return /^[0-9+()\s-]{7,20}$/.test(value)
+}
+
+function emailLooksValid(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+}
+
 export function SignIn() {
   const [form, setForm] = useState<SignInForm>(initialForm)
   const [submitted, setSubmitted] = useState(false)
-  const [validated, setValidated] = useState(false)
+  /** Show native-style errors only on fields the user has edited (or all after submit attempt). */
+  const [dirty, setDirty] = useState<Partial<Record<keyof SignInForm, boolean>>>({})
   const passwordsMatch = form.password === form.confirmPassword
+
+  function markDirty(field: keyof SignInForm) {
+    setDirty((current) => (current[field] ? current : { ...current, [field]: true }))
+  }
 
   function updateField(event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const { name, type, value } = event.currentTarget
+    markDirty(name as keyof SignInForm)
     const nextValue =
       type === 'checkbox' && event.currentTarget instanceof HTMLInputElement
         ? event.currentTarget.checked
@@ -43,9 +59,24 @@ export function SignIn() {
     }))
   }
 
+  /** Do not flag empty confirm as "mismatch"; only after confirm has non-whitespace content. */
+  const confirmInvalid =
+    (dirty.confirmPassword && !form.confirmPassword.trim()) ||
+    Boolean(
+      form.confirmPassword.trim() &&
+        !passwordsMatch &&
+        (dirty.confirmPassword ||
+          (dirty.password && form.confirmPassword.trim().length > 0)),
+    )
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setValidated(true)
+
+    const allDirty = Object.fromEntries(allFormKeys.map((key) => [key, true])) as Record<
+      keyof SignInForm,
+      true
+    >
+    setDirty(allDirty)
 
     if (!event.currentTarget.checkValidity() || !passwordsMatch) {
       event.stopPropagation()
@@ -59,7 +90,7 @@ export function SignIn() {
   function handleReset() {
     setForm(initialForm)
     setSubmitted(false)
-    setValidated(false)
+    setDirty({})
   }
 
   return (
@@ -72,12 +103,7 @@ export function SignIn() {
 
       <Card className="signup-card border-0 shadow-sm">
         <Card.Body>
-          <Form
-            noValidate
-            validated={validated}
-            onBlur={() => setValidated(true)}
-            onSubmit={handleSubmit}
-          >
+          <Form noValidate onSubmit={handleSubmit}>
             <Row className="g-3">
               <Col md={6}>
                 <Form.Group controlId="fullName">
@@ -86,6 +112,7 @@ export function SignIn() {
                     required
                     autoComplete="name"
                     minLength={3}
+                    isInvalid={Boolean(dirty.fullName && form.fullName.trim().length < 3)}
                     name="fullName"
                     pattern=".{3,}"
                     placeholder="Numele tau"
@@ -104,6 +131,7 @@ export function SignIn() {
                   <Form.Control
                     required
                     autoComplete="email"
+                    isInvalid={Boolean(dirty.email && !emailLooksValid(form.email))}
                     name="email"
                     placeholder="nume@email.com"
                     type="email"
@@ -122,6 +150,7 @@ export function SignIn() {
                   <Form.Control
                     required
                     autoComplete="tel"
+                    isInvalid={Boolean(dirty.phone && !phoneIsValid(form.phone))}
                     name="phone"
                     pattern="^[0-9+()\\s-]{7,20}$"
                     placeholder="0712 345 678"
@@ -139,6 +168,7 @@ export function SignIn() {
                   <Form.Label>Tip utilizator</Form.Label>
                   <Form.Select
                     required
+                    isInvalid={Boolean(dirty.userType && !form.userType)}
                     name="userType"
                     value={form.userType}
                     onChange={updateField}
@@ -162,6 +192,7 @@ export function SignIn() {
                     required
                     autoComplete="new-password"
                     minLength={8}
+                    isInvalid={Boolean(dirty.password && form.password.length < 8)}
                     name="password"
                     placeholder="Minim 8 caractere"
                     type="password"
@@ -180,7 +211,7 @@ export function SignIn() {
                   <Form.Control
                     required
                     autoComplete="new-password"
-                    isInvalid={validated && !passwordsMatch}
+                    isInvalid={confirmInvalid}
                     name="confirmPassword"
                     placeholder="Repeta parola"
                     type="password"
@@ -188,7 +219,9 @@ export function SignIn() {
                     onChange={updateField}
                   />
                   <Form.Control.Feedback type="invalid">
-                    Parolele trebuie sa fie identice.
+                    {dirty.confirmPassword && !form.confirmPassword.trim()
+                      ? 'Introdu aceeasi parola inca o data.'
+                      : 'Parolele trebuie sa fie identice.'}
                   </Form.Control.Feedback>
                 </Form.Group>
               </Col>
@@ -200,6 +233,7 @@ export function SignIn() {
                     checked={form.terms}
                     feedback="Trebuie sa accepti termenii bibliotecii."
                     feedbackType="invalid"
+                    isInvalid={Boolean(dirty.terms && !form.terms)}
                     label="Accept termenii si conditiile bibliotecii"
                     name="terms"
                     type="checkbox"

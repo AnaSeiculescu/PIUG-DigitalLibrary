@@ -12,7 +12,7 @@ type HotspotLinkProps = {
 export function HotspotLink({ ariaLabel, children, className, icon, to }: HotspotLinkProps) {
   return (
     <Link
-      className={`btn retro-button hotspot-button ${className} d-flex align-items-center justify-content-between gap-3 px-3 py-2 shadow`}
+      className={`btn retro-button hotspot-button align-items-center justify-content-between gap-3 px-3 py-2 shadow ${className}`}
       to={to}
       aria-label={ariaLabel}
     >

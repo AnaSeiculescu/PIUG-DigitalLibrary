@@ -7,21 +7,14 @@ import { Program } from '../pages/Program'
 import { Recommendations } from '../pages/Recommendations'
 import { SignIn } from '../pages/SignIn'
 
-/** Reuse these in `<Link>`, `navigate()`, and tests so paths stay in one place. */
-export const paths = {
-  home: '/',
-  catalog: '/catalog',
-  bookDetails: '/catalog/:bookSlug',
-  recommendations: '/recomandari',
-  program: '/program',
-  inscriere: '/sign-in',
-  signIn: '/sign-in',
-} as const
+import { paths } from './paths'
+
+export { paths }
 
 /**
  * Central list of app routes. To add a page:
- * 1. Add a new entry in `paths` above.
- * 2. Create a component under `src/pages/<Name>/`
+ * 1. Add the path string in `src/routes/paths.ts`.
+ * 2. Create a component under `src/pages/<Name>/`.
  * 3. Import it here and append one `AppRouteConfig` using `paths`.
  */
 export type AppRouteConfig = {

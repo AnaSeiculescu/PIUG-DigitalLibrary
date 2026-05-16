@@ -6,7 +6,7 @@
   --library-dark-brown: #3a2414;
   --library-walnut: #5b3923;
   --library-espresso: #251309;
-  --library-dark-walnut: #9b7452;
+  --library-dark-walnut: #ca9b72;
 }
 
 body {
@@ -29,10 +29,62 @@ svg {
   background-color: #e8ccae !important;
 }
 
+/* Hover discret pentru taburile din meniul principal (Nu include brand-ul) */
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link {
+  padding-inline: 0.5rem;
+  border-radius: 0.38rem;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+/* Ruta curentă — discret: tentă fină și contur luminos față de taburile albe */
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link.active {
+  background-color: rgba(58, 36, 20, 0.13);
+  color: var(--library-dark-brown) !important;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(58, 36, 20, 0.16);
+}
+
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link.active:hover {
+  background-color: rgba(58, 36, 20, 0.18);
+  color: var(--library-espresso) !important;
+}
+
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link.active:focus-visible {
+  outline: 2px solid rgba(91, 31, 27, 0.3);
+  outline-offset: 2px;
+}
+
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link:not(.active):hover,
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link:not(.active):focus-visible {
+  background-color: rgba(58, 36, 20, 0.1);
+  color: var(--library-dark-brown);
+}
+
+#app-main-nav.navbar-collapse .navbar-nav > .nav-item > .nav-link:not(.active):focus-visible {
+  outline: 2px solid rgba(91, 31, 27, 0.28);
+  outline-offset: 2px;
+}
+
 .brand-mark {
   width: 32px;
   height: 32px;
   background: #5b1f1b;
+}
+
+/* Separatori între linkuri navbar doar desktop (Bootstrap lg+) */
+@media (min-width: 992px) {
+  .navbar-collapse .app-navbar-desktop-dividers.navbar-nav {
+    gap: 0 !important;
+  }
+
+  .navbar-collapse .app-navbar-desktop-dividers > .nav-item:not(:first-child) {
+    margin-left: 0.55rem;
+    padding-left: 0.95rem;
+    border-left: 1px solid rgba(58, 36, 20, 0.2);
+  }
 }
 
 .search-form {
@@ -400,6 +452,168 @@ svg {
   color: #f6dfb8 !important;
 }
 
+/*
+ * Acasa, mobil (<md): scurtături stivuite sub imagine (orientare sarcină + atingere
+ * suficientă; aliniere la navigare stratificată / PIUG - ex. curs piug8).
+ */
+.library-mobile-quicklinks {
+  max-width: min(100%, calc((100vh - 130px) * 1.5));
+}
+
+.library-hero-mobile-stack .library-mobile-quicklinks {
+  width: min(100%, calc((100vh - 130px) * 1.5));
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(37, 19, 9, 0.22);
+  background-color: rgba(43, 26, 16, 0.35);
+}
+
+.library-mobile-quicklink {
+  gap: 0;
+  align-items: stretch;
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  min-height: 56px;
+  transition: filter 0.15s ease, background-color 0.15s ease;
+}
+
+.library-mobile-quicklink:not(:first-child) {
+  border-top: 1px solid rgba(255, 244, 220, 0.12);
+}
+
+.library-mobile-quicklink:hover {
+  filter: brightness(1.05);
+}
+
+.library-mobile-quicklink:focus-visible {
+  outline: 2px solid rgba(248, 230, 199, 0.5);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.library-mobile-quicklink__glyph {
+  flex: 0 0 3.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.library-mobile-quicklink--shelf .library-mobile-quicklink__glyph {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.library-mobile-quicklink .book-icon {
+  transform: scale(0.9);
+}
+
+.library-mobile-quicklink__title {
+  font-size: 0.94rem;
+  font-variant: small-caps;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.library-mobile-quicklink__subtitle {
+  font-size: 0.73rem;
+  font-style: italic;
+  opacity: 0.92;
+  margin-top: 0.06rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.library-mobile-quicklink__chevron {
+  flex: 0 0 auto;
+  font-weight: 300;
+  font-size: 1.45rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.library-mobile-quicklink--shelf {
+  background-color: var(--library-green);
+  border-color: #2d4a21;
+}
+
+.library-mobile-quicklink--shelf .library-mobile-quicklink__title {
+  color: #f8e6c7;
+}
+
+.library-mobile-quicklink--shelf .library-mobile-quicklink__subtitle {
+  color: #d8b982;
+}
+
+.library-mobile-quicklink--shelf .library-mobile-quicklink__chevron {
+  color: #f8e6c7;
+}
+
+.library-mobile-quicklink--chair {
+  background-color: #5b1f1b;
+}
+
+.library-mobile-quicklink--chair .library-mobile-quicklink__title {
+  color: #f8e6c7;
+}
+
+.library-mobile-quicklink--chair .library-mobile-quicklink__subtitle {
+  color: #e8cfa0;
+}
+
+.library-mobile-quicklink--chair .library-mobile-quicklink__chevron {
+  color: #f8e6c7;
+}
+
+.library-mobile-quicklink--chair .retro-icon {
+  font-size: 1.38rem;
+  line-height: 1;
+  color: #f2c15d;
+}
+
+.library-mobile-quicklink--desk {
+  background-color: var(--library-dark-walnut);
+}
+
+.library-mobile-quicklink--desk .library-mobile-quicklink__title,
+.library-mobile-quicklink--desk .library-mobile-quicklink__subtitle {
+  color: #3a2414;
+}
+
+.library-mobile-quicklink--desk .library-mobile-quicklink__chevron {
+  color: #3a2414;
+}
+
+.library-mobile-quicklink--desk .retro-icon {
+  color: #3a2414;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.library-mobile-quicklink--contact {
+  background-color: #e8ccae;
+}
+
+.library-mobile-quicklink--contact .library-mobile-quicklink__glyph {
+  background: rgba(91, 57, 35, 0.08);
+  border-right-color: rgba(91, 57, 35, 0.18);
+}
+
+.library-mobile-quicklink--contact .library-mobile-quicklink__title,
+.library-mobile-quicklink--contact .library-mobile-quicklink__subtitle,
+.library-mobile-quicklink--contact .library-mobile-quicklink__chevron {
+  color: #3a2414;
+}
+
+.library-mobile-quicklink--contact .library-mobile-quicklink__subtitle {
+  opacity: 0.88;
+  color: #5b3923;
+}
+
+.library-mobile-quicklink--contact .retro-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
 .scroll-controls {
   position: fixed;
   right: 1rem;
@@ -473,8 +687,18 @@ svg {
 }
 
 .footer-links {
-  gap: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: 0;
+  row-gap: 0.35rem;
+}
+
+.footer-links > a:not(:first-child):not(.footer-link-line-start) {
+  margin-left: 0.5rem;
+  padding-left: 0.95rem;
+  border-left: 1px solid rgba(255, 244, 220, 0.26);
 }
 
 .footer-links a {
@@ -697,6 +921,21 @@ svg {
 .recommendation-card .book-cover {
   height: clamp(205px, 29vh, 260px);
   aspect-ratio: auto;
+}
+
+/* Mobil: zona titlului deasupra caruselului are inaltime minima stabila — copertile raman aliniate intre slide-uri. */
+@media (max-width: 767.98px) {
+  .recommendation-slide .recommendation-section-title {
+    display: flex;
+    align-items: flex-start;
+    min-height: clamp(4.5rem, 15vw, 6rem);
+    line-height: 1.28;
+    margin-bottom: 0.85rem;
+  }
+
+  .recommendation-card .card-body {
+    min-height: 7rem;
+  }
 }
 
 .recommendations-video-section {
@@ -1259,22 +1498,6 @@ svg {
     max-width: 100%;
   }
 
-  .hotspot-button {
-    gap: 0.35rem !important;
-    min-width: 0;
-    padding: 0.35rem 0.5rem !important;
-    font-size: 0.62rem;
-    line-height: 1.1;
-  }
-
-  .hotspot-button .fs-4 {
-    font-size: 1rem !important;
-  }
-
-  .hotspot-button small {
-    display: none !important;
-  }
-
   .help-hotspot {
     width: 36px;
     height: 36px;
@@ -1321,53 +1544,56 @@ svg {
   }
 }
 
+/* Acasa: tipografie sectiunea „Despre biblioteca” — mobil / tableta ingusta */
+@media (max-width: 767.98px) {
+  .home-info-section .home-section-title {
+    font-size: clamp(1.35rem, 4.2vw, 1.6rem);
+    line-height: 1.28;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-info-section h1.home-section-title {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-copy {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.02rem;
+    font-weight: 500 !important;
+    line-height: 1.72;
+    text-align: left;
+    text-indent: 0;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .how-it-works-section .home-section-title {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36rem;
+  }
+
+  .how-it-works-section .row {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 @media (max-width: 420px) {
   .brand-mark {
     width: 30px;
     height: 30px;
   }
 
-  .shelf-link {
-    left: 34%;
-    top: 33%;
-    width: 34%;
-  }
-
-  .chair-link {
-    left: 63%;
-    top: 69%;
-    width: 31%;
-  }
-
-  .desk-link {
-    left: 2%;
-    top: 74%;
-    width: 31%;
-  }
-
-  .contact-link {
-    left: 76%;
-    top: 41%;
-    width: 19%;
-  }
-
   .library-hero {
     padding-right: 0.35rem;
     padding-left: 0.35rem;
-  }
-
-  .hotspot-button {
-    padding: 0.28rem 0.36rem !important;
-    font-size: 0.55rem;
-  }
-
-  .hotspot-button .retro-icon,
-  .hotspot-button .fs-4 {
-    display: none !important;
-  }
-
-  .contact-link {
-    width: 21%;
   }
 
   .footer-content {

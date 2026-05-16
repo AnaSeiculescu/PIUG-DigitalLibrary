@@ -1,8 +1,9 @@
 import { Button, Container } from 'react-bootstrap'
 
 import libraryImage from '../../../assets/biblioteca-interactiva.png'
-import { paths } from '../../../routes/routes.config'
+import { librarySceneActions } from '../librarySceneActions'
 import { HotspotLink } from './HotspotLink'
+import { LibraryMobileShortcuts } from './LibraryMobileShortcuts'
 
 type LibraryHeroProps = {
   onOpenHelp: () => void
@@ -12,55 +13,58 @@ export function LibraryHero({ onOpenHelp }: LibraryHeroProps) {
   return (
     <section className="library-hero py-3 py-md-4" aria-label="Biblioteca interactiva">
       <Container fluid="lg">
-        <div className="library-scene position-relative mx-auto overflow-hidden rounded shadow">
-          <img
-            alt="Interior de biblioteca cu rafturi, birou, fotoliu si panou de anunturi"
-            className="library-photo d-block w-100 h-100"
-            src={libraryImage}
+        <div className="library-hero-mobile-stack d-flex flex-column gap-3 mx-auto">
+          <div className="library-scene position-relative mx-auto overflow-hidden rounded shadow">
+            <img
+              alt="Interior de biblioteca cu rafturi, birou, fotoliu si panou de anunturi"
+              className="library-photo d-block w-100 h-100"
+              src={libraryImage}
+            />
+
+            {librarySceneActions.map((action) => {
+              const hotspotIconProp =
+                action.overlayIcon === undefined
+                  ? {}
+                  : action.overlayIcon === 'book'
+                    ? { icon: 'book' as const }
+                    : { icon: action.overlayIcon }
+
+              return (
+                <HotspotLink
+                  key={action.to}
+                  ariaLabel={action.ariaLabel}
+                  className={`${action.desktopClass} library-hotspot-overlay d-none d-md-flex`}
+                  to={action.to}
+                  {...hotspotIconProp}
+                >
+                  <span className="text-start">
+                    <span className="d-block fw-bold">{action.title}</span>
+                    <small className="d-block">{action.subtitle}</small>
+                  </span>
+                </HotspotLink>
+              )
+            })}
+
+            <Button
+              aria-label="Ajutor"
+              className="help-hotspot rounded-circle"
+              onClick={onOpenHelp}
+              variant="dark"
+            >
+              ?
+            </Button>
+          </div>
+
+          <LibraryMobileShortcuts
+            items={librarySceneActions.map((a) => ({
+              to: a.to,
+              accent: a.accent,
+              ariaLabel: a.ariaLabel,
+              title: a.title,
+              subtitle: a.subtitle,
+              icon: a.mobileIcon,
+            }))}
           />
-
-          <HotspotLink ariaLabel="Catalog" className="shelf-link" icon="book" to={paths.catalog}>
-            <span className="text-start">
-              <span className="d-block fw-bold">Catalog</span>
-              <small className="d-block">Descopera colectia</small>
-            </span>
-          </HotspotLink>
-          <HotspotLink
-            ariaLabel="Recomandari"
-            className="chair-link"
-            icon="★"
-            to={paths.recommendations}
-          >
-            <span className="text-start">
-              <span className="d-block fw-bold">Recomandari</span>
-              <small className="d-block">Carti pentru tine</small>
-            </span>
-          </HotspotLink>
-          <HotspotLink ariaLabel="Inscriere" className="desk-link" icon="✎" to={paths.signIn}>
-            <span className="text-start">
-              <span className="d-block fw-bold">Inscriere</span>
-              <small className="d-block">Devino membru</small>
-            </span>
-          </HotspotLink>
-          <HotspotLink
-            ariaLabel="Contact biblioteca"
-            className="contact-link"
-            to={`${paths.program}#contact`}
-          >
-            <span className="text-start">
-              <span className="d-block fw-bold">Contact</span>
-              <small className="d-block">Program</small>
-            </span>
-          </HotspotLink>
-
-          <Button
-            aria-label="Ajutor"
-            className="help-hotspot rounded-circle"
-            onClick={onOpenHelp}
-            variant="dark"
-          >
-            ?
-          </Button>
         </div>
       </Container>
     </section>
