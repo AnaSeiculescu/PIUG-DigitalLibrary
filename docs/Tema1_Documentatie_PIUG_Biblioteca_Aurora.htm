@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tema 1 — Documentație site — Biblioteca Aurora</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.35; color: #111; margin: 2.5cm; }
+    h1 { font-size: 16pt; text-align: center; margin-top: 2cm; }
+    h2 { font-size: 14pt; margin-top: 1.2em; border-bottom: 1px solid #ccc; padding-bottom: 0.2em; }
+    h3 { font-size: 12pt; margin-top: 1em; }
+    .cover { text-align: center; margin-top: 3cm; }
+    .cover .big { font-size: 18pt; font-weight: bold; margin-bottom: 1.5cm; }
+    .muted { color: #444; font-style: italic; }
+    table { border-collapse: collapse; width: auto; max-width: 100%; margin: 0.6em auto 1em; }
+    th, td { border: 1px solid #333; padding: 6px 8px; vertical-align: top; }
+    th { background: #f0f0f0; text-align: left; }
+    .break { page-break-after: always; }
+    .shot { border: 2px dashed #888; background: #f5f5f5; min-height: 120px; padding: 12px; margin: 8px 0; color: #555; font-style: italic; }
+    ul.compact li { margin-bottom: 0.35em; }
+    code { font-family: Consolas, monospace; font-size: 10.5pt; }
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="big">Universitatea Politehnica Timișoara<br />Facultatea de Automatică și Calculatoare<br />Programarea interfețelor utilizator grafice (PIUG)</p>
+  <p style="font-size:14pt;font-weight:bold;margin-top:2cm;">Documentație site web — Tema 1</p>
+  <p style="margin-top:2cm;"><strong>Biblioteca Aurora</strong><br /><span class="muted">aplicație web demo — bibliotecă digitală</span></p>
+  <p style="margin-top:2.5cm;text-align:left;max-width:420px;margin-left:auto;margin-right:auto;">
+    <strong>Participanți:</strong><br />
+    Nica Ionelia-Roxana<br />
+    Sălăvăstru Iuliana-Adelina<br />
+    Seiculescu Ana
+  </p>
+  <p style="margin-top:1.8cm;">
+    <strong>An de studiu:</strong> II &nbsp;·&nbsp; <strong>Semestru:</strong> II<br />
+    <strong>An universitar:</strong> 2025–2026
+  </p>
+</div>
+
+<div class="break"></div>
+
+<h1>Cuprins orientativ</h1>
+<ol class="compact">
+  <li>Tematica aleasă și argumentarea alegerii</li>
+  <li>Proiectarea interfeței, paleta de culori și Principiile euristice ale lui Nielsen</li>
+  <li>Paginile aplicației — capturi de ecran și funcționalitate (desktop și mobil)</li>
+  <li>Adaptări pentru versiunea mobilă</li>
+  <li>Tehnologii utilizate</li>
+  <li>Șabloane / template-uri externe</li>
+</ol>
+
+<div class="break"></div>
+
+<h2>1. Tematica aleasă și argumentarea alegerii</h2>
+<p>
+  Tema proiectului este o <strong>bibliotecă digitală interactivă</strong> (&bdquo;Biblioteca Aurora&rdquo;), orientată către cititori care doresc să exploreze un catalog de cărți,
+  să vadă recomandări tematice, să înțeleagă programul bibliotecii și regulile de utilizare, precum și să parcurgă un flux simplu de înscriere ca membru.
+  Am ales această temă pentru că combină informare utilă (catalog, disponibilitate, reguli) cu o experiență vizuală unitară, apropiată de atmosfera unei biblioteci clasice,
+  dar adaptată mediului web și dispozitivelor mobile. Ne-am propus o interfață coerentă, previzibilă și plăcută vizual, potrivită unui public larg de cititori.
+</p>
+
+<h2>2. Interfața utilizator — decizii de design și culori</h2>
+
+<h3>2.1. Codificare vizuală, limbaj și consistență</h3>
+<ul class="compact">
+  <li><strong>Codificare vizuală și paletă limitată.</strong> Am grupat stimulii vizuali în zone mari clar separate și am limitat numărul de culori cu rol semantic distinct:
+    fundaluri calde (paper/bej/maro), accente pentru acțiuni și navigare (verde închis, roșu-brun), text &bdquo;cerneală&rdquo; pe suprafețe deschise.
+    Astfel se distinge rapid bara de navigare, conținutul și elementele interactive (butoane, legături, hotspot-uri).</li>
+  <li><strong>Limbaj clar pentru utilizator.</strong> Meniul și formularele folosesc termeni familiari unei biblioteci (&bdquo;Catalog&rdquo;, &bdquo;Recomandări&rdquo;, &bdquo;Program și contact&rdquo;, &bdquo;Înscriere&rdquo;),
+    fără jargon tehnic, astfel încât mesajele să fie înțelese fără instrucțiuni suplimentare.</li>
+  <li><strong>Consistență între pagini.</strong> Header-ul fix (navbar), footer-ul comun și componentele Bootstrap/React Bootstrap sunt folosite în același mod pe întreg site-ul,
+    pentru predictibilitate și parcurgere fluentă.</li>
+</ul>
+
+<h3>2.2. Paleta de culori (implementată în <code>src/index.css</code>)</h3>
+<table>
+  <thead><tr><th>Rol</th><th>Culoare exemplificativă</th><th>Observație</th></tr></thead>
+  <tbody>
+    <tr><td>Fond principal / zona hero</td><td>#b98558 &mdash; #9f6b46 (gradient)</td><td>Atmosferă caldă, &bdquo;hârtie veche&rdquo;, bibliotecă.</td></tr>
+    <tr><td>Text principal (&bdquo;cerneală&rdquo;)</td><td>#21312d</td><td>Contrast bun pe fundaluri deschise.</td></tr>
+    <tr><td>Navbar</td><td>#e8ccae</td><td>Zonă distinctă față de hero; separă navigarea de conținut.</td></tr>
+    <tr><td>Accente interactive / căutare</td><td>#5b1f1b</td><td>Butoane de căutare, hotspot-uri, footer.</td></tr>
+    <tr><td>Succes / disponibilitate</td><td>#243d1c</td><td>Buton &bdquo;success&rdquo;, badge-uri pozitive.</td></tr>
+    <tr><td>Evidențiere text pe secțiuni întunecate</td><td>#fff4dc &mdash; #f8e6c7</td><td>Lizibilitate pe zone cu gradient închis.</td></tr>
+  </tbody>
+</table>
+<p>
+  Nu am înmulțit culorile doar de dragul varietății: fiecare nuanță revine în mai multe locuri cu același rol (navigare, succes, fond, accent),
+  ceea ce întărește ierarhia vizuală și ușurează scanarea paginii.
+</p>
+
+<h3>2.3. Principiile euristice ale lui Nielsen — aplicare în proiect</h3>
+<table>
+  <thead><tr><th>Euristica</th><th>Cum se reflectă în aplicație</th></tr></thead>
+  <tbody>
+    <tr><td>1. Vizibilitatea stării sistemului</td><td>Ruta activă în navbar este marcată vizual; după rezervare sau trimitere formular apare mesaj de confirmare (Alert).</td></tr>
+    <tr><td>2. Potrivire sistem &mdash; lume reală</td><td>Termeni ca &bdquo;catalog&rdquo;, &bdquo;rezervare&rdquo;, &bdquo;program&rdquo; urmează limbajul unei biblioteci reale.</td></tr>
+    <tr><td>3. Control și libertate</td><td>Legături &bdquo;înapoi la catalog&rdquo; la carte negăsită; navigare clară între pagini.</td></tr>
+    <tr><td>4. Consistență și standarde</td><td>Layout comun (<code>AppLayout</code>), Bootstrap pentru grid și componente; același stil pentru butoane/formulare.</td></tr>
+    <tr><td>5. Prevenirea erorilor</td><td>Validare formulare (înscriere, contact); confirmarea parolei; dezactivarea rezervării dacă volumul nu e disponibil.</td></tr>
+    <tr><td>6. Recunoaștere în loc de memorare</td><td>Meniul enumeră destinațiile; hotspot-uri și imagini ghidate pe pagina principală.</td></tr>
+    <tr><td>7. Flexibilitate și eficiență</td><td>Căutare în navbar și în catalog; filtre categorii; shortcut-uri rapide pe mobil la pagina principală.</td></tr>
+    <tr><td>8. Design estetic și minimalist</td><td>Secțiuni aerisite; accent pe conținutul principal (catalog, detalii carte).</td></tr>
+    <tr><td>9. Ajutor la erori</td><td>Mesaje pentru carte negăsită; feedback vizual la câmpuri invalide după validare.</td></tr>
+    <tr><td>10. Ajutor și documentație</td><td>Buton Help / FAQ și modal de ajutor pe fluxuri relevante.</td></tr>
+  </tbody>
+</table>
+
+<div class="break"></div>
+
+<h2>3. Paginile site-ului — capturi de ecran și funcționalitate</h2>
+<p class="muted">
+  Inserați în Word capturi la rezoluție reprezentativă: <strong>desktop</strong> (ex. 1280×720 sau 1440×900) și <strong>mobil</strong> (ex. 390×844 sau emulator Chrome DevTools).
+  Păstrați aceleași URL-uri pentru comparație directă.
+</p>
+
+<h3>3.1. Pagina principală (&bdquo;Acasă&rdquo;) — <code>/</code></h3>
+<p><strong>Funcționalitate:</strong> prezintă scena interactivă a bibliotecii (hero) cu hotspot-uri către Catalog, Recomandări, Program și contact; secțiune &bdquo;Despre bibliotecă&rdquo;;
+  pași &bdquo;Cum funcționează&rdquo;; controale de der sus/jos (desktop); modal Help.</p>
+<div class="shot">[CAPTURĂ DESKTOP — Acasă — întreaga pagină sau viewport principal]</div>
+<div class="shot">[CAPTURĂ MOBIL — Acasă]</div>
+
+<h3>3.2. Catalog — <code>/catalog</code></h3>
+<p><strong>Funcționalitate:</strong> căutare după titlu/autor/categorie; filtre categorii; listare cărți — pe desktop ca tabel scrollabil orizontal în container,
+  pe mobil ca layout tip card cu etichete pentru fiecare câmp.</p>
+<div class="shot">[CAPTURĂ DESKTOP — Catalog]</div>
+<div class="shot">[CAPTURĂ MOBIL — Catalog]</div>
+
+<h3>3.3. Detalii carte — <code>/catalog/&lt;slug-carte&gt;</code></h3>
+<p><strong>Funcționalitate:</strong> afișare copertă stilizată, categorie, disponibilitate, descriere; buton &bdquo;Rezervă&rdquo; (activ doar dacă e disponibilă); cărți similare;
+  dacă slug-ul nu există — mesaj și legătură înapoi.</p>
+<div class="shot">[CAPTURĂ DESKTOP — exemplu pagină detaliu carte disponibilă]</div>
+<div class="shot">[CAPTURĂ MOBIL — aceeași carte]</div>
+
+<h3>3.4. Recomandări — <code>/recomandari</code></h3>
+<p><strong>Funcționalitate:</strong> carusel cu secțiuni (&bdquo;Cartea săptămânii&rdquo;, &bdquo;Top cărți&rdquo;, &bdquo;Recomandarea bibliotecarului&rdquo;); zonă video încorporată și text descriptiv.</p>
+<div class="shot">[CAPTURĂ DESKTOP — Recomandări]</div>
+<div class="shot">[CAPTURĂ MOBIL — Recomandări]</div>
+
+<h3>3.5. Program și contact — <code>/program</code></h3>
+<p><strong>Funcționalitate:</strong> program săptămânal în tabel; reguli; FAQ în accordion; formular de contact cu validare și mesaj după trimitere; buton Help.</p>
+<div class="shot">[CAPTURĂ DESKTOP — Program și contact]</div>
+<div class="shot">[CAPTURĂ MOBIL — Program și contact]</div>
+
+<h3>3.6. Înscriere — <code>/sign-in</code></h3>
+<p><strong>Funcționalitate:</strong> formular de înregistrare (nume, email, telefon, tip utilizator, parolă, confirmare, acord GDPR); validări și mesaje de eroare contextuale.</p>
+<div class="shot">[CAPTURĂ DESKTOP — Înscriere]</div>
+<div class="shot">[CAPTURĂ MOBIL — Înscriere]</div>
+
+<div class="break"></div>
+
+<h2>4. Adaptări pentru versiunea mobilă (rezumat)</h2>
+<ul class="compact">
+  <li><strong>Navbar:</strong> colaps Bootstrap (<code>expand=&quot;lg&quot;</code>); după navigare, meniul se închide pe ecran mic pentru a elibera viewport-ul.</li>
+  <li><strong>Pagina principală:</strong> sub breakpoint-ul mare, hotspot-urile mici din imagine sunt înlocuite/completate cu lista de shortcut-uri tactile (&bdquo;quicklinks&rdquo;) —
+    înălțime minimă pentru zone de atingere, design stratificat ușor de parcurs cu degetul.</li>
+  <li><strong>Catalog:</strong> transformarea tabelului într-un grid de &bdquo;rânduri-card&rdquo; cu pseudo-etichete <code>data-label</code> pentru titlu/autor/categorie/disponibilitate.</li>
+  <li><strong>Recomandări:</strong> controale carusel ascunse pe mobil pentru a reduce suprapunerea; spațiere și înălțimi minime pentru titluri între slide-uri.</li>
+  <li><strong>Tipografie secțiuni informative:</strong> pe ecran îngust, textul &bdquo;Despre bibliotecă&rdquo; trece la aliniere stânga, fără indent primului rând, cu hyphenare pentru lizibilitate.</li>
+  <li><strong>Footer și layout:</strong> grilă footer pe o singură coloană la lățimi foarte mici; padding redus pentru hero.</li>
+</ul>
+<p><strong>Capturi suplimentare recomandate:</strong></p>
+<div class="shot">[CAPTURĂ MOBIL — meniu hamburger deschis]</div>
+<div class="shot">[CAPTURĂ MOBIL — lista de shortcut-uri sub hero]</div>
+<div class="shot">[CAPTURĂ MOBIL — un rând din catalog în layout card]</div>
+
+<h2>5. Tehnologii utilizate</h2>
+<table>
+  <thead><tr><th>Tehnologie</th><th>Rol</th></tr></thead>
+  <tbody>
+    <tr><td>React 19</td><td>UI declarativă, componente reutilizabile.</td></tr>
+    <tr><td>TypeScript</td><td>Tipare statică pentru fiabilitate.</td></tr>
+    <tr><td>Vite</td><td>Mediu de build și server de dezvoltare rapid.</td></tr>
+    <tr><td>React Router 7</td><td>Rutare în client (<code>BrowserRouter</code>, <code>Routes</code>).</td></tr>
+    <tr><td>Bootstrap 5</td><td>Grid, utilitare CSS, componente de bază.</td></tr>
+    <tr><td>React Bootstrap</td><td>Componente Bootstrap integrate în React (Navbar, Card, Form, Carousel etc.).</td></tr>
+    <tr><td>ESLint</td><td>Verificări statice ale codului.</td></tr>
+  </tbody>
+</table>
+
+<h2>6. Șabloane / template-uri descărcate</h2>
+<p>
+  <strong>Nu s-a folosit un template HTML/CSS complet descărcat ca site gata făcut.</strong> Proiectul pleacă de la scaffold-ul oficial <strong>Vite + React + TypeScript</strong>
+  (<a href="https://vitejs.dev/guide/">https://vitejs.dev/guide/</a>), la care s-au adăugat bibliotecile open-source <strong>Bootstrap</strong> și <strong>React Bootstrap</strong>
+  din registre publice npm (<a href="https://www.npmjs.com/package/bootstrap">bootstrap</a>, <a href="https://www.npmjs.com/package/react-bootstrap">react-bootstrap</a>).
+  Layout-ul vizual, culorile personalizate și conținutul paginilor sunt realizate în echipă pentru tema bibliotecii digitale.
+</p>
+
+<p style="margin-top:2cm;" class="muted">
+  Document generat pentru predare — deschideți acest fișier în Microsoft Word și salvați ca .docx dacă este necesar.
+</p>
+
+</body>
+</html>
