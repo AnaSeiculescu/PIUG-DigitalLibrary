@@ -57,7 +57,7 @@ export const librarySceneActions: readonly LibrarySceneAction[] = [
     desktopClass: 'contact-link',
     accent: 'contact',
     mobileIcon: '\u2732',
-    title: 'Contact',
-    subtitle: 'Program si contact',
+    title: 'Program si',
+    subtitle: 'Contact',
   },
 ]
